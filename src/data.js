@@ -1,6 +1,7 @@
 export const storeProducts = [{
         id: 1,
-        title: "Sunfeast Dark Fantasy Choco Fills  (75 g)",
+        title: "Sunfeast Dark Fantasy",
+        quantity: '75 g',
         img: "img/product01.jpeg",
         price: 27,
         company: "Sunfeast",
@@ -11,7 +12,8 @@ export const storeProducts = [{
     },
     {
         id: 2,
-        title: "Oreo Original Chocolatey Sandwich Biscuits  (50 g)",
+        title: "Oreo Chocolatey",
+        quantity: '50 g',
         img: "img/product02.jpeg",
         price: 9,
         company: "Oreo",
@@ -22,7 +24,8 @@ export const storeProducts = [{
     },
     {
         id: 3,
-        title: "Unibic Assorted Cookies  (450 g, Pack of 6)",
+        title: "Unibic Assorted Cookies",
+        quantity: '450 g, Pack of 6',
         img: "img/product03.jpeg",
         price: 8,
         company: "Unibic",
@@ -33,7 +36,8 @@ export const storeProducts = [{
     },
     {
         id: 4,
-        title: "Britannia Premium Sooji Rusk  (273 g)",
+        title: "Britannia Premium Rusk",
+        quantity: "273 g",
         img: "img/product04.jpeg",
         price: 38,
         company: "Britannia",
@@ -44,18 +48,20 @@ export const storeProducts = [{
     },
     {
         id: 5,
-        title: "Parle Monaco Salted Biscuits  (200 g)",
+        title: "Parle Monaco Biscuits",
+        quantity: "200 g",
         img: "img/product05.jpeg",
-        price: 2,
+        price: 29,
         company: "Parle",
-        info: "The old is gold. Parle best one ever buiscuit. Ingredients: Wheat Flour, Edible Vegetable Oils (Palm Oil, Palmolein Oil), Sugar, Raising Agents, Invert Sugar Syrup, Edible Common Salt, Yeast, Acidity Regulators, Emulsifiers, Dough Conditioner and Improver Amylase & Other Enzymes"
+        info: "The old is gold. Parle best one ever buiscuit. Ingredients: Wheat Flour, Edible Vegetable Oils (Palm Oil, Palmolein Oil), Sugar, Raising Agents, Invert Sugar Syrup, Edible Common Salt, Yeast, Acidity Regulators, Emulsifiers, Dough Conditioner and Improver Amylase & Other Enzymes",
         inCart: false,
         count: 0,
         total: 0
     },
     {
         id: 6,
-        title: "Dukes Utsav Danish Butter Cookies  (400 g)",
+        title: "Dukes Utsav Danish Cookies",
+        quantity: "400 g",
         img: "img/product06.jpeg",
         price: 279,
         company: "Dukes",
@@ -66,7 +72,8 @@ export const storeProducts = [{
     },
     {
         id: 7,
-        title: "Dukes Masala Nibbles  (150 g)",
+        title: "Dukes Masala Nibbles",
+        quantity: "150 g",
         img: "img/product07.jpeg",
         price: 47,
         company: "Dukes",
@@ -77,7 +84,8 @@ export const storeProducts = [{
     },
     {
         id: 8,
-        title: "Britannia Good Day Butter Cookies  (150 g)",
+        title: "Britannia Good Day Cookies",
+        quantity: "150 g",
         img: "img/product08.jpeg",
         price: 21,
         company: "Britannia",
@@ -88,9 +96,10 @@ export const storeProducts = [{
     },
     {
         id: 9,
-        title: "Parle Hide & Seek Black Bourbon Choco Creme Sandwich  (100 g)",
+        title: "Parle Hide & Seek Black Bourbon",
+        quantity: "100 g",
         img: "img/product09.jpeg",
-        price: 2,
+        price: 24,
         company: "Parle",
         info: "The old is gold. Parle best one ever buiscuit. Ingredients: Sugar, Wheat Flour, Edible Vegetable Oil, Cocoa Solids, Invert Sugar Syrup, Edible Common Salt, Raising Agents and Emulsifier",
         inCart: false,
@@ -101,7 +110,8 @@ export const storeProducts = [{
 
 export const detailProduct = {
     id: 1,
-    title: "Sunfeast Dark Fantasy Choco Fills  (75 g)",
+    title: "Sunfeast Dark Fantasy",
+    quantity: "75 g",
     img: "img/product01.jpeg",
     price: 10,
     company: "Sunfeast",
