@@ -6,7 +6,7 @@ import PropTypes from 'prop-types';
 
 export default class Product extends Component {
     render() {
-        const {id, title, img, price,inCart} = this.props.product;
+        const {id, title, img, price, inCart} = this.props.product;
         return (
             <ProductWrapper className="col-9 mx-auto col-md-6 col-lg-3 my-3">
                 <div className="card">
@@ -18,7 +18,11 @@ export default class Product extends Component {
                                 <img src={img} alt="product" className="card-img-top" />
                             </Link>
                             <button className="cart-btn" disabled={inCart ? true: false}
-                                onClick={() => value.addToCart(id)}>
+                                onClick={() => {
+                                    value.addToCart(id);//Add product to cart
+                                    value.openModal(id);//Open modal when product get in cart
+                                }}
+                                >
                                 
                                 {inCart ? (
                                 <p className="text-capitalize mb-0" disabled>
