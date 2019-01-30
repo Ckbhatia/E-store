@@ -80,7 +80,12 @@ export class ProductProvider extends Component {
     };
 
     clearCart = () => {
-        console.log('Item cleared items');
+        this.setState(()=> {
+            return { cart: []};
+        },()=> {
+            this.setProducts();
+            this.addTotals();
+        });
     };
     addTotals = () => {
         let subTotal = 0;
