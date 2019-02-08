@@ -68,7 +68,24 @@ export class ProductProvider extends Component {
     }
 
     incrementItem = id => {
-        console.log('Item increased');
+        let tempCart = [...this.state.cart];
+        //Find selected products
+        const selectedProduct = tempCart.find(item => item.id === id);
+        //Access index for product
+        const index = tempCart.indexOf(selectedProduct);
+        //Access product
+        const product = tempCart[index];
+        //Increment product quantity by one
+        product.count = product.count + 1;
+        //Update total of product based on increment
+        product.total = product.count * product.price;
+
+        this.setState(()=> {
+            return {
+                cart: [...tempCart]
+            }},()=> {
+                this.addTotals();
+            })
     };
     
     decrementItem = id => {
