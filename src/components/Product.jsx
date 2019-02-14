@@ -83,6 +83,8 @@ const ProductWrapper = styled.div`
     }
     .card-img-top {
         transition: all 0.3s linear;
+        width: 8rem;
+        height: 6rem;
     }
     .img-container:hover .card-img-top {
         transform: scale(1.2);
