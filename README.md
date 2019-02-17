@@ -5,6 +5,19 @@ This is an e-commerce web app, app allows the user to buy the product from this 
 
 Note: please note don't make payment for any product. Product will not delivered and payment will not reverted back.
 
+## Snapshots
+Main page:
+
+<img src='https://i.imgur.com/UYypK3L.png' alt="main page" width="460" />
+
+Product to cart:
+
+<img src='https://i.imgur.com/gssRHIp.png' alt="add product to page" width="460" />
+
+Cart:
+
+<img src="https://i.imgur.com/nrNOj89.png" alt="Cart page" width="460" />
+
 ### How to run this app
 You can run this app by visit: https://e-store.netlify.com/
 
