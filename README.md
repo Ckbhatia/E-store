@@ -8,7 +8,7 @@ Note: please note don't make payment for any product. Product will not delivered
 ## Snapshots
 Main page:
 
-<img src='https://i.imgur.com/UYypK3L.png' alt="main page" width="460" />
+<img src="https://i.imgur.com/nrNOj89.png" alt="main page" width="460" />
 
 Product to cart:
 
@@ -16,7 +16,7 @@ Product to cart:
 
 Cart:
 
-<img src="https://i.imgur.com/nrNOj89.png" alt="Cart page" width="460" />
+<img src='https://i.imgur.com/UYypK3L.png' alt="cart page" width="460" />
 
 ### How to run this app
 You can run this app by visit: https://e-store.netlify.com/
