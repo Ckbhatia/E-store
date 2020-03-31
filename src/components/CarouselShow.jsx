@@ -14,7 +14,7 @@ export default function CarouselShow() {
       <Carousel activeIndex={index} onSelect={handleSelect}>
         {bannerData.map((banner) => {
           return (
-            <Carousel.Item>
+            <Carousel.Item key={banner.id}>
               <img
                 className="d-block w-100"
                 src={banner.img}
