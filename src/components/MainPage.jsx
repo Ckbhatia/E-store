@@ -1,8 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
-import { bannerDetails } from "../data/banner";
 import { mainProducts } from "../data/mainProducts";
+import CaraouselShow from "./CarouselShow";
 
 export default function MainPage() {
   return (
@@ -10,7 +10,7 @@ export default function MainPage() {
       <Div className="main-page-main-container wrapper">
         <div className="main-content flex-center">
           <div className="main-banner">
-            <img src={bannerDetails.img} alt="" className="main-banner-image" />
+            <CaraouselShow />
           </div>
           <div className="main-products-category">
             {mainProducts &&
@@ -44,9 +44,7 @@ const Div = styled.div`
     display: flex;
     justify-content: center;
     width: 100%;
-  }
-  .main-banner-image {
-    width: 100%;
+    margin-top: 1rem;
   }
 
   .main-products-category {
