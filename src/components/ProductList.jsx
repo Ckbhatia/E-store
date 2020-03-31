@@ -1,29 +1,29 @@
-import React, { Component } from 'react';
-import Product from './Product';
-import Title from './Title';
-import { ProductConsumer } from '../Context';
+import React, { useContext, useState, useEffect, withRouter } from "react";
+import Product from "./Product";
+import Title from "./Title";
+import { ProductContext } from "../Context";
 
-export default class ProductList extends Component {
+export default function ProductList({ match }) {
+  // const [filteredProducts, updateFilteredProducts] = useState(null);
+  const { filterProducts, products } = useContext(ProductContext);
 
-    render() {
-        return (
-            <React.Fragment>
-                <div className="py-5">
-                    <div className="container">
-                        <Title name="our" title="products" />
+  useEffect(() => {
+    // FilterProducts by url category
+    filterProducts(match.path.substring(1));
+  }, []);
 
-                        <div className="row">
-                            <ProductConsumer>
-                                {value => {
-                                    return value.products.map( product => {
-                                        return <Product key={product.id} product={product}/>
-                                    })
-                                }}
-                            </ProductConsumer>
-                        </div>
-                    </div>
-                </div>
-            </React.Fragment>
-        );
-    }
-};
+  return (
+    <>
+      <div className="py-5">
+        <div className="container">
+          <Title name="Fresh" title={match.path.substring(1)} />
+          <div className="row">
+            {products.map((product) => {
+              return <Product key={product.id} product={product} />;
+            })}
+          </div>
+        </div>
+      </div>
+    </>
+  );
+}
