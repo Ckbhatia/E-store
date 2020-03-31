@@ -1,5 +1,6 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import styled from "styled-components";
+import { ProductContext } from "../Context";
 
 const encode = (data) => {
   return Object.keys(data)
@@ -9,12 +10,17 @@ const encode = (data) => {
 
 export default function checkout() {
   const [name, updateName] = useState("");
-  const [number, updateNumber] = useState(null);
+  const [number, updateNumber] = useState("");
   const [email, updateEmail] = useState("");
   const [address, updateAddress] = useState("");
   const [alternateNumber, updateAlternateNumber] = useState("");
   const [landmark, updateLandmark] = useState("");
-  const [hasSubmitted, updateSubmitted] = useState(false);
+  const [isSuccess, updateSuccess] = useState(false);
+  const [hasError, updateError] = useState(false);
+
+  const { cart, cartSubTotal, cartTax, cartTotoal, clearCart } = useContext(
+    ProductContext
+  );
 
   const orderId =
     Date.now() +
@@ -22,42 +28,63 @@ export default function checkout() {
       .toString(36)
       .substring(2, 15);
 
-  const handleSubmit = (e) => {
-    fetch("/", {
-      method: "POST",
-      headers: { "Content-Type": "application/x-www-form-urlencoded" },
-      body: encode({
-        "form-name": "order",
-        orderId,
-        name,
-        number,
-        email,
-        address,
-        alternateNumber,
-        landmark,
-        products: { apple: "apples" }
-      })
-    })
-      .then(() => updateSubmitted(true))
-      .catch((error) => alert(error));
-
-    // Update the submitted state
-    if (hasSubmitted) {
-      setTimeout(() => updateSubmitted(false), 1000);
-    }
+  const handleSubmit = async (e) => {
     e.preventDefault();
+    // Checks that cart has some products in it
+    if (cart.length > 0) {
+      try {
+        const res = await fetch("/", {
+          method: "POST",
+          headers: { "Content-Type": "application/x-www-form-urlencoded" },
+          body: encode({
+            "form-name": "order",
+            orderId,
+            name,
+            number,
+            email,
+            address,
+            alternateNumber,
+            landmark,
+            orderProductDetails: { cart, cartSubTotal, cartTax, cartTotoal }
+          })
+        });
+        if (res.status) {
+          await updateSuccess(true);
+          // Clean the cart if order placed
+          clearCart();
+        }
+        // Update the submitted state
+        if (isSuccess) {
+          setTimeout(() => updateSuccess(false), 2000);
+        }
+      } catch (error) {
+        updateSuccess(false);
+        alert("There's an error.");
+      }
+    } else {
+      updateError(true);
+      if (isSuccess) {
+        setTimeout(() => updateError(false), 2000);
+      }
+    }
   };
 
   return (
     <div className="checkout-main-container">
       <div className="form-main-container">
         <Div className="main-container wrapper">
-          <div className="msg-txt-container center-child">
+          <div className="msg-txt-container">
             {/* Show message on condition */}
-            {/* {isSuccess && (
-              <span className="success-msg">Data saved successfully</span>
+            {isSuccess && (
+              <span className="success-msg">
+                Order placed. OrderID: {orderId}
+              </span>
             )}
-            {hasError && <span className="failed-msg">There's an error</span>} */}
+            {hasError && (
+              <span className="failed-msg">
+                Please add items to your cart or don't refresh your page
+              </span>
+            )}
           </div>
           <div className="form-main-container">
             <div className="form-container flex-center">
@@ -172,6 +199,14 @@ const Div = styled.div`
     padding: 1.2rem 0;
     width: 100%;
     background-color: #38c942;
+  }
+
+  .failed-msg {
+    font-size: 1.2rem;
+    color: #fff;
+    padding: 1.2rem 0;
+    width: 100%;
+    background-color: #e62412;
   }
 
   .failed-msg {
