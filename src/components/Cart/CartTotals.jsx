@@ -1,43 +1,66 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-import PayPalButton from './PayPalButton';
+import React from "react";
+import { Link } from "react-router-dom";
+import styled from "styled-components";
+// import PayPalButton from "./PayPalButton";
 
-export default function CartTotals({value, history}) { 
-    const { cartSubTotal, cartTax, cartTotal, clearCart} = value;
+export default function CartTotals({ value, history }) {
+  const { cartSubTotal, cartTax, cartTotal, clearCart } = value;
 
-    return ( 
-        <React.Fragment>
-            <div className="container">
-                <div className="row">
-                    <div className="col-10 mt-2 ml-sm-5 ml-md-auto-col-sm-8 text-capitalize text-right">
-                        <Link to="/">
-                            <button className="btn btn-outline-danger text-uppercase" type="button"
-                            onClick={()=> clearCart()}>
-                            clear cart
-                            </button>
-                        </Link>
-                        <h5>
-                            <span className="text-title">
-                            subtotal :</span>
-                            <strong>₹ {cartSubTotal}</strong>
-                        </h5>
-                        <h5>
-                            <span className="text-title">
-                            tax :</span>
-                            <strong>₹ {cartTax}</strong>
-                        </h5>
-                        <h5>
-                            <span className="text-title">
-                            total :</span>
-                            <strong>₹ {cartTotal}</strong>
-                        </h5>
-                        <PayPalButton 
-                        total={cartTotal} 
-                        clearTotal={clearCart}
-                        history={history} /> 
-                    </div>
-                </div>    
-            </div>
-        </React.Fragment>
-    )
-};
+  return (
+    <React.Fragment>
+      <div className="container">
+        <div className="row">
+          <div className="col-10 mt-2 ml-sm-5 ml-md-auto-col-sm-8 text-capitalize text-right">
+            {/* <Link to="/"> */}
+            <button
+              className="btn btn-outline-danger text-uppercase mb-3"
+              type="button"
+              onClick={() => clearCart()}
+            >
+              clear cart
+            </button>
+            {/* </Link> */}
+            <h5>
+              <span className="text-title">subtotal :</span>
+              <strong>₹ {cartSubTotal}</strong>
+            </h5>
+            <h5>
+              <span className="text-title">Delivery :</span>
+              <strong>₹ {cartTax}</strong>
+            </h5>
+            <h5>
+              <span className="text-title">total :</span>
+              <strong>₹ {cartTotal}</strong>
+            </h5>
+            {/* <PayPalButton
+              total={cartTotal}
+              clearTotal={clearCart}
+              history={history}
+            /> */}
+            <ButtonWrapper className="checkout-btn-container mt-3">
+              <Link className="checkout-link" to="/checkout">
+                <button className="checkout-btn">
+                  Proceed to checkout / आगे बढ़ें
+                </button>
+              </Link>
+            </ButtonWrapper>
+          </div>
+        </div>
+      </div>
+    </React.Fragment>
+  );
+}
+
+const ButtonWrapper = styled.div`
+  .checkout-btn {
+    font-size: 0.9rem;
+    padding: 0.3rem 0.8rem;
+    color: #4a4a4a;
+    background-color: #2cd852;
+    border: 1px solid #2cd852;
+    border-radius: 4px;
+    &:hover {
+      background-color: #2cc64e;
+    }
+  }
+`;
