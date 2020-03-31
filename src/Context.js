@@ -16,19 +16,19 @@ export class ProductProvider extends Component {
     cartTax: 0,
     cartTotoal: 0
   };
-  componentDidMount() {
-    this.setProducts();
-  }
-  setProducts = () => {
-    let tempProducts = [];
-    storeProducts.forEach((item) => {
-      const singleItem = { ...item };
-      tempProducts = [...tempProducts, singleItem];
-    });
-    this.setState(() => {
-      return { products: tempProducts };
-    });
-  };
+  // componentDidMount() {
+  //   this.setProducts();
+  // }
+  // setProducts = () => {
+  //   let tempProducts = [];
+  //   storeProducts.forEach((item) => {
+  //     const singleItem = { ...item };
+  //     tempProducts = [...tempProducts, singleItem];
+  //   });
+  //   this.setState(() => {
+  //     return { products: tempProducts };
+  //   });
+  // };
 
   filterProducts = (category) => {
     let tempProducts = [];
