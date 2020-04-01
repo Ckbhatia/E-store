@@ -1,5 +1,6 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import styled from "styled-components";
+import Form from "react-bootstrap/Form";
 import { ProductContext } from "../Context";
 
 const encode = (data) => {
@@ -17,6 +18,7 @@ export default function Checkout() {
   const [address, updateAddress] = useState("");
   const [alternate, updateAlternate] = useState("");
   const [landmark, updateLandmark] = useState("");
+  const [isChecked, updateCheck] = useState(true);
   const [isSuccess, updateSuccess] = useState(false);
   const [hasError, updateError] = useState(false);
 
@@ -151,6 +153,13 @@ export default function Checkout() {
                   placeholder="Alternate Phone ( optional )"
                   value={alternate}
                   onChange={(e) => updateAlternate(e.target.value)}
+                />
+                <Form.Check
+                  custom
+                  checked={isChecked}
+                  onChange={() => updateCheck((isChecked) => !isChecked)}
+                  type="checkbox"
+                  label={`Save this`}
                 />
                 <input
                   className="submit-btn text-uppercase"
