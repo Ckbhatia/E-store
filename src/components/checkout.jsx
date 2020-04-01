@@ -3,9 +3,11 @@ import styled from "styled-components";
 import { ProductContext } from "../Context";
 
 const encode = (data) => {
-  return Object.keys(data)
-    .map((key) => encodeURIComponent(key) + "=" + encodeURIComponent(data[key]))
-    .join("&");
+  const formData = new FormData();
+  Object.keys(data).forEach((k) => {
+    formData.append(k, data[k]);
+  });
+  return formData;
 };
 
 export default function checkout() {
@@ -31,7 +33,7 @@ export default function checkout() {
   const handleSubmit = async (e) => {
     fetch("/", {
       method: "POST",
-      headers: { "Content-Type": "application/x-www-form-urlencoded" },
+      // headers: { "Content-Type": "application/x-www-form-urlencoded" },
       body: encode({ "form-name": "order", email })
     })
       .then(() => alert("Success!"))
