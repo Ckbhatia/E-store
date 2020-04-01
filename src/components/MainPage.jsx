@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { mainProducts } from "../data/mainProducts";
+import { bannerData } from "../data/banner";
 import CaraouselShow from "./CarouselShow";
 
 export default function MainPage() {
@@ -10,7 +11,7 @@ export default function MainPage() {
       <Div className="main-page-main-container wrapper">
         <div className="main-content flex-center">
           <div className="main-banner">
-            <CaraouselShow />
+            <CaraouselShow bannerData={bannerData} />
           </div>
           <div className="main-products-category">
             {mainProducts &&
