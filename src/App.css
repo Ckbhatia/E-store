@@ -1,44 +1,55 @@
 :root {
-    --MainGreen: rgb(37, 166, 65);
-    --LightGreen: rgb(178, 230, 173);
-    --MainWhite: rgb(255, 255, 255);
-    --MainDark: rgb(0, 0, 0);
-    --MainYellow: rgb(255, 217, 0);
+  --MainGreen: rgb(37, 166, 65);
+  --LightGreen: rgb(178, 230, 173);
+  --MainWhite: rgb(255, 255, 255);
+  --MainDark: rgb(0, 0, 0);
+  --MainYellow: rgb(255, 217, 0);
 }
 
 body {
-    font-family: 'Roboto', sans-serif !important;
-    background-color: var(--MainWhite) !important;
-    color: var(--MainDark) !important;
+  font-family: "Roboto", sans-serif !important;
+  background-color: var(--MainWhite) !important;
+  color: var(--MainDark) !important;
 }
 
 .text-title {
-    font-family: Arial, cursive, sans-serif;
-    letter-spacing: 0.3rem;
-    text-transform: uppercase;
+  font-family: Arial, cursive, sans-serif;
+  letter-spacing: 0.3rem;
+  text-transform: uppercase;
 }
 
 .text-blue {
-    color: var(--mainBlue);
+  color: var(--mainBlue);
 }
 
 .text-bright {
-    color: var(--lightblue);
+  color: var(--lightblue);
 }
 .btn-black {
-    background: transparent;
-    text-transform: capitalize;
-    font-size: 0.8rem !important;
-    color: var(--MainDark);
-    border-radius: 0 !important;
-    border: 0.1rem solid var(--MainDark) !important;
+  background: transparent;
+  text-transform: capitalize;
+  font-size: 0.8rem !important;
+  color: var(--MainDark);
+  border-radius: 0 !important;
+  border: 0.1rem solid var(--MainDark) !important;
 }
 .btn-black:hover {
-    background-color: var(--MainDark) !important;
-    color: var(--MainWhite) !important;
+  background-color: var(--MainDark) !important;
+  color: var(--MainWhite) !important;
 }
 .cart-icon {
-    cursor: pointer;
-    font-size: 1.2rem;
-    color: var(--MainYellow);
+  cursor: pointer;
+  font-size: 1.2rem;
+  color: var(--MainYellow);
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+.wrapper {
+  width: 100%;
+  max-width: 1300px;
+  margin: 0 auto;
 }
