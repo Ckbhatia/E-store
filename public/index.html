@@ -41,9 +41,14 @@
     <noscript>You need to enable JavaScript to run this app.</noscript>
     <!-- A little help for the Netlify post-processing bots -->
     <form name="order" netlify netlify-honeypot="bot-field" hidden>
+      <input type="text" name="orderId" />
       <input type="text" name="name" />
+      <input type="number" name="number" />
       <input type="email" name="email" />
-      <textarea name="message"></textarea>
+      <input type="number" name="alternate" />
+      <input type="number" name="landmark" />
+      <textarea name="address"></textarea>
+      <textarea name="order"></textarea>
     </form>
     <div id="root"></div>
     <!--
