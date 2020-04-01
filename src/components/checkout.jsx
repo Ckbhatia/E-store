@@ -15,7 +15,7 @@ export default function checkout() {
   const [number, updateNumber] = useState("");
   const [email, updateEmail] = useState("");
   const [address, updateAddress] = useState("");
-  const [alternateNumber, updateAlternateNumber] = useState("");
+  const [alternate, updateAlternate] = useState("");
   const [landmark, updateLandmark] = useState("");
   const [isSuccess, updateSuccess] = useState(false);
   const [hasError, updateError] = useState(false);
@@ -34,7 +34,16 @@ export default function checkout() {
     fetch("/", {
       method: "POST",
       // headers: { "Content-Type": "application/x-www-form-urlencoded" },
-      body: encode({ "form-name": "order", number })
+      body: encode({
+        "form-name": "order",
+        orderId,
+        name,
+        number,
+        email,
+        alternate,
+        address,
+        landmark
+      })
     })
       .then(() => alert("Success!"))
       .catch((error) => alert(error));
@@ -69,6 +78,8 @@ export default function checkout() {
                 data-netlify="true"
                 action="/order/success"
               >
+                <input type="hidden" name="form-name" value="order" />
+
                 <label>
                   Name
                   <input
@@ -126,12 +137,12 @@ export default function checkout() {
                   onChange={(e) => updateLandmark(e.target.value)}
                 />
                 <input
-                  type="text"
-                  name="alternative number"
+                  type="number"
+                  name="alternate"
                   className="input"
                   placeholder="Alternate Phone ( optional )"
-                  value={alternateNumber}
-                  onChange={(e) => updateAlternateNumber(e.target.value)}
+                  value={alternate}
+                  onChange={(e) => updateAlternate(e.target.value)}
                 />
                 <input
                   className="submit-btn text-uppercase"
