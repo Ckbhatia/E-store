@@ -1,6 +1,7 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import styled from "styled-components";
 import { ProductContext } from "../Context";
+import Form from "react-bootstrap/Form";
 
 const encode = (data) => {
   const formData = new FormData();
@@ -17,12 +18,34 @@ export default function checkout() {
   const [address, updateAddress] = useState("");
   const [alternate, updateAlternate] = useState("");
   const [landmark, updateLandmark] = useState("");
+  const [isChecked, updateCheck] = useState(true);
   const [isSuccess, updateSuccess] = useState(false);
   const [hasError, updateError] = useState(false);
 
-  const { cart, cartSubTotal, cartTax, cartTotoal, clearCart } = useContext(
+  const { cart, cartSubTotal, delivery, cartTotal, clearCart } = useContext(
     ProductContext
   );
+
+  useEffect(() => {
+    const userData = JSON.parse(localStorage.getItem("userData"));
+    if (userData.userInfo) {
+      const {
+        name,
+        email,
+        number,
+        address,
+        landmark,
+        alternate
+      } = userData.userInfo;
+      // update the the user address/form
+      updateName(name);
+      updateEmail(email);
+      updateNumber(number);
+      updateAddress(address);
+      updateAlternate(alternate);
+      updateLandmark(landmark);
+    }
+  }, []);
 
   const orderId =
     Date.now() +
@@ -31,6 +54,20 @@ export default function checkout() {
       .substring(2, 15);
 
   const handleSubmit = async (e) => {
+    if (isChecked) {
+      // Save user info / address to localStorage to retain
+      localStorage.setItem(
+        "userData",
+        JSON.stringify({
+          userCart: cart,
+          totals: cartTotal,
+          subTotal: cartSubTotal,
+          delivery: delivery,
+          userInfo: { name, email, number, landmark, address, alternate }
+        })
+      );
+    }
+
     try {
       const res = await fetch("/", {
         method: "POST",
@@ -44,11 +81,13 @@ export default function checkout() {
           alternate,
           address,
           landmark,
-          order: JSON.stringify({ cart, cartTax, cartSubTotal, cartTotoal })
+          order: JSON.stringify({ cart, delivery, cartSubTotal, cartTotal })
         })
       });
       if (res.status === 200) {
         updateSuccess(true);
+        // Clear the cart
+        clearCart();
         setTimeout(() => updateSuccess(false), 2000);
       }
     } catch (error) {
@@ -151,6 +190,13 @@ export default function checkout() {
                   placeholder="Alternate Phone ( optional )"
                   value={alternate}
                   onChange={(e) => updateAlternate(e.target.value)}
+                />
+                <Form.Check
+                  custom
+                  checked={isChecked}
+                  onChange={() => updateCheck((isChecked) => !isChecked)}
+                  type="checkbox"
+                  label={`Save this`}
                 />
                 <input
                   className="submit-btn text-uppercase"
