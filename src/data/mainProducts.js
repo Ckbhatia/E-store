@@ -12,5 +12,12 @@ export const mainProducts = [
     img: "img/mainCategory/fruits.jpg",
     info: "Fresh fruits",
     category: "fruits"
+  },
+  {
+    id: 3,
+    title: "immunity",
+    img: "img/mainCategory/immunity.jpg",
+    info: "Fresh fruits",
+    category: "immunity"
   }
 ];
