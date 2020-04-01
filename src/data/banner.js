@@ -10,5 +10,11 @@ export const bannerData = [
     title: "immunity booster",
     img: "img/banner/booster.jpg",
     info: "immunity booster"
+  },
+  {
+    id: 3,
+    title: "fight with corona",
+    img: "img/banner/corona.png",
+    info: "immunity booster"
   }
 ];
