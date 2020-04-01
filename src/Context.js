@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { storeProducts, detailProduct } from "./data";
 import products from "./data/products";
+import { mainProducts } from "./data/mainProducts";
 
 export const ProductContext = React.createContext();
 
@@ -13,22 +14,52 @@ export class ProductProvider extends Component {
     modalOpen: false,
     modalProduct: detailProduct,
     cartSubTotal: 0,
-    cartTax: 0,
-    cartTotoal: 0
+    delivery: 0,
+    cartTotal: 0
   };
-  // componentDidMount() {
-  //   this.setProducts();
-  // }
-  // setProducts = () => {
-  //   let tempProducts = [];
-  //   storeProducts.forEach((item) => {
-  //     const singleItem = { ...item };
-  //     tempProducts = [...tempProducts, singleItem];
-  //   });
-  //   this.setState(() => {
-  //     return { products: tempProducts };
-  //   });
-  // };
+
+  componentDidMount() {
+    const userData = JSON.parse(localStorage.getItem("userData"));
+    if (userData) {
+      // update the cart
+      this.setState({
+        cart: userData.userCart,
+        totals: userData.totals,
+        subTotal: userData.subTotal,
+        delivery: userData.delivery
+      });
+    }
+    this.setProducts();
+  }
+
+  setProducts = () => {
+    // let tempProducts = [];
+    // storeProducts.forEach((item) => {
+    //   const singleItem = { ...item };
+    //   tempProducts = [...tempProducts, singleItem];
+    // });
+    // this.setState(() => {
+    //   return { products: tempProducts };
+    // });
+    let tempProducts = [];
+
+    let tempCategories = [];
+
+    for (let k = 0; k < mainProducts.length; k++) {
+      tempCategories = tempCategories.concat(mainProducts[k].title);
+    }
+
+    tempCategories.forEach((category) => {
+      products[category].forEach((item) => {
+        const singleItem = { ...item };
+        tempProducts = [...tempProducts, singleItem];
+      });
+    });
+
+    this.setState(() => {
+      return { products: tempProducts };
+    });
+  };
 
   filterProducts = (category) => {
     let tempProducts = [];
@@ -64,9 +95,16 @@ export class ProductProvider extends Component {
       },
       () => {
         this.addTotals();
-      }
+      },
+      localStorage.setItem(
+        "userData",
+        JSON.stringify({
+          userCart: [...this.state.cart, product]
+        })
+      )
     );
   };
+
   openModal = (id) => {
     const product = this.getItem(id);
     this.setState(() => {
@@ -169,27 +207,51 @@ export class ProductProvider extends Component {
   clearCart = () => {
     this.setState(
       () => {
-        return { cart: [] };
+        return { cart: [], subTotal: 0, totals: 0, delivery: 0 };
       },
       () => {
-        this.setProducts();
+        // this.setProducts();
+        localStorage.setItem(
+          "userData",
+          JSON.stringify({
+            userCart: this.state.cart,
+            totals: this.state.totals,
+            subTotal: this.state.subTotal,
+            delivery: this.state.deliver
+          })
+        );
         this.addTotals();
       }
     );
   };
-  addTotals = () => {
+
+  addTotals = (deliveryCharge = 0) => {
+    // Make changes according to the data
     let subTotal = 0;
     this.state.cart.map((item) => (subTotal += item.total));
-    const tempTax = subTotal * 0.1;
-    const tax = parseFloat(tempTax.toFixed(2));
-    const total = subTotal + tax;
-    this.setState(() => {
-      return {
-        cartSubTotal: subTotal,
-        cartTax: tax,
-        cartTotal: total
-      };
-    });
+    // const tempTax = subTotal * 0.1;
+    // const deliveryCharge = parseFloat(tempTax.toFixed(2));
+    const total = subTotal + deliveryCharge;
+    this.setState(
+      () => {
+        return {
+          cartSubTotal: subTotal,
+          delivery: deliveryCharge,
+          cartTotal: total
+        };
+      },
+      () => {
+        localStorage.setItem(
+          "userData",
+          JSON.stringify({
+            userCart: this.state.cart,
+            totals: this.state.cartSubTotal,
+            subTotal: this.state.cartTotal,
+            delivery: this.state.delivery
+          })
+        );
+      }
+    );
   };
   render() {
     return (
