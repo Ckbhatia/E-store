@@ -48,10 +48,12 @@ export default function checkout() {
         })
       });
       if (res.status === 200) {
-        alert("Order successfull");
+        updateSuccess(true);
+        setTimeout(() => updateSuccess(false), 2000);
       }
     } catch (error) {
-      alert("There's an error", error);
+      updateError(true);
+      setTimeout(() => updateError(false), 2000);
     }
 
     e.preventDefault();
@@ -82,7 +84,7 @@ export default function checkout() {
                 method="POST"
                 name="order"
                 data-netlify="true"
-                action="/order/success"
+                // action="/order/success"
               >
                 <input type="hidden" name="form-name" value="order" />
 
