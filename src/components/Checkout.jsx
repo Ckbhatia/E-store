@@ -3,17 +3,19 @@ import styled from "styled-components";
 import { ProductContext } from "../Context";
 
 const encode = (data) => {
-  return Object.keys(data)
-    .map((key) => encodeURIComponent(key) + "=" + encodeURIComponent(data[key]))
-    .join("&");
+  const formData = new FormData();
+  Object.keys(data).forEach((k) => {
+    formData.append(k, data[k]);
+  });
+  return formData;
 };
 
-export default function checkout() {
+export default function Checkout() {
   const [name, updateName] = useState("");
   const [number, updateNumber] = useState("");
   const [email, updateEmail] = useState("");
   const [address, updateAddress] = useState("");
-  const [alternateNumber, updateAlternateNumber] = useState("");
+  const [alternate, updateAlternate] = useState("");
   const [landmark, updateLandmark] = useState("");
   const [isSuccess, updateSuccess] = useState(false);
   const [hasError, updateError] = useState(false);
@@ -29,44 +31,34 @@ export default function checkout() {
       .substring(2, 15);
 
   const handleSubmit = async (e) => {
-    e.preventDefault();
-    // Checks that cart has some products in it
-    if (cart.length > 0) {
-      try {
-        const res = await fetch("/", {
-          method: "POST",
-          headers: { "Content-Type": "application/x-www-form-urlencoded" },
-          body: encode({
-            "form-name": "order",
-            orderId,
-            name,
-            number,
-            email,
-            address,
-            alternateNumber,
-            landmark,
-            orderProductDetails: { cart, cartSubTotal, cartTax, cartTotoal }
-          })
-        });
-        if (res.status) {
-          await updateSuccess(true);
-          // Clean the cart if order placed
-          clearCart();
-        }
-        // Update the submitted state
-        if (isSuccess) {
-          setTimeout(() => updateSuccess(false), 2000);
-        }
-      } catch (error) {
-        updateSuccess(false);
-        alert("There's an error.");
+    try {
+      const res = await fetch("/", {
+        method: "POST",
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        body: encode({
+          "form-name": "order",
+          orderId,
+          name,
+          number,
+          email,
+          alternate,
+          address,
+          landmark,
+          order: JSON.stringify({ cart, cartTax, cartSubTotal, cartTotoal })
+        })
+      });
+      if (res.status === 200) {
+        updateSuccess(true);
+        // Clean the cart
+        clearCart();
+        setTimeout(() => updateSuccess(false), 2000);
       }
-    } else {
+    } catch (error) {
       updateError(true);
-      if (isSuccess) {
-        setTimeout(() => updateError(false), 2000);
-      }
+      setTimeout(() => updateError(false), 2000);
     }
+
+    e.preventDefault();
   };
 
   return (
@@ -91,11 +83,9 @@ export default function checkout() {
               <form
                 className="form"
                 onSubmit={handleSubmit}
-                method="post"
+                method="POST"
                 name="order"
                 data-netlify="true"
-                netlify-honeypot="bot-field"
-                netlify
               >
                 <input type="hidden" name="form-name" value="order" />
                 <label>
@@ -155,12 +145,12 @@ export default function checkout() {
                   onChange={(e) => updateLandmark(e.target.value)}
                 />
                 <input
-                  type="text"
-                  name="alternative number"
+                  type="number"
+                  name="alternate"
                   className="input"
                   placeholder="Alternate Phone ( optional )"
-                  value={alternateNumber}
-                  onChange={(e) => updateAlternateNumber(e.target.value)}
+                  value={alternate}
+                  onChange={(e) => updateAlternate(e.target.value)}
                 />
                 <input
                   className="submit-btn text-uppercase"
