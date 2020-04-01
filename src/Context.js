@@ -5,6 +5,7 @@ import { mainProducts } from "./data/mainProducts";
 
 export const ProductContext = React.createContext();
 
+//Provider
 export class ProductProvider extends Component {
   state = {
     products: [],
@@ -25,7 +26,8 @@ export class ProductProvider extends Component {
         cart: userData.userCart,
         totals: userData.totals,
         subTotal: userData.subTotal,
-        delivery: userData.delivery
+        delivery: userData.delivery,
+        userInfo: userData.userInfo
       });
     }
     this.setProducts();
@@ -80,6 +82,10 @@ export class ProductProvider extends Component {
     product.count = 1;
     const price = product.price;
     product.total = price;
+
+    // Retrive userInfo
+    const { userInfo } = JSON.parse(localStorage.getItem("userData"));
+
     this.setState(
       () => {
         return { products: tempProducts, cart: [...this.state.cart, product] };
@@ -90,7 +96,8 @@ export class ProductProvider extends Component {
       localStorage.setItem(
         "userData",
         JSON.stringify({
-          userCart: [...this.state.cart, product]
+          userCart: [...this.state.cart, product],
+          userInfo
         })
       )
     );
@@ -196,6 +203,8 @@ export class ProductProvider extends Component {
   };
 
   clearCart = () => {
+    const { userInfo } = JSON.parse(localStorage.getItem("userData"));
+
     this.setState(
       () => {
         return { cart: [], subTotal: 0, totals: 0, delivery: 0 };
@@ -208,7 +217,8 @@ export class ProductProvider extends Component {
             userCart: this.state.cart,
             totals: this.state.totals,
             subTotal: this.state.subTotal,
-            delivery: this.state.deliver
+            delivery: this.state.delivery,
+            userInfo
           })
         );
         this.addTotals();
@@ -223,6 +233,9 @@ export class ProductProvider extends Component {
     // const tempTax = subTotal * 0.1;
     // const deliveryCharge = parseFloat(tempTax.toFixed(2));
     const total = subTotal + deliveryCharge;
+
+    const { userInfo } = JSON.parse(localStorage.getItem("userData"));
+
     this.setState(
       () => {
         return {
@@ -238,7 +251,8 @@ export class ProductProvider extends Component {
             userCart: this.state.cart,
             totals: this.state.cartSubTotal,
             subTotal: this.state.cartTotal,
-            delivery: this.state.delivery
+            delivery: this.state.delivery,
+            userInfo
           })
         );
       }
