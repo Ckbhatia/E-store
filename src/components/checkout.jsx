@@ -67,6 +67,7 @@ export default function checkout() {
                 data-netlify="true"
                 netlify-honeypot="bot-field"
               >
+                <input type="hidden" name="form-name" value="order" />
                 <label>
                   Name
                   <input
