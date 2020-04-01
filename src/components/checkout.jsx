@@ -31,22 +31,27 @@ export default function checkout() {
       .substring(2, 15);
 
   const handleSubmit = async (e) => {
-    fetch("/", {
-      method: "POST",
-      // headers: { "Content-Type": "application/x-www-form-urlencoded" },
-      body: encode({
-        "form-name": "order",
-        orderId,
-        name,
-        number,
-        email,
-        alternate,
-        address,
-        landmark
-      })
-    })
-      .then(() => alert("Success!"))
-      .catch((error) => alert(error));
+    try {
+      const res = await fetch("/", {
+        method: "POST",
+        // headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        body: encode({
+          "form-name": "order",
+          orderId,
+          name,
+          number,
+          email,
+          alternate,
+          address,
+          landmark
+        })
+      });
+      if (res.status === 200) {
+        alert("Order successfull");
+      }
+    } catch (error) {
+      alert("There's an error", error);
+    }
 
     e.preventDefault();
   };
