@@ -43,7 +43,8 @@ export default function checkout() {
           email,
           alternate,
           address,
-          landmark
+          landmark,
+          order: JSON.stringify({ cart, cartTax, cartSubTotal, cartTotoal })
         })
       });
       if (res.status === 200) {
