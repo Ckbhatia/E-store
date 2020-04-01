@@ -10,8 +10,7 @@ import Default from "./components/Default";
 import { Switch, Route } from "react-router-dom";
 import Modal from "./components/Modal";
 import MainPage from "./components/MainPage";
-import { mainProducts } from "./data/mainProducts";
-import Checkout from "./components/checkout";
+import Checkout from "./components/Checkout";
 
 class App extends Component {
   render() {
