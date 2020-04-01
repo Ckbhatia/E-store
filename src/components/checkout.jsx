@@ -29,44 +29,15 @@ export default function checkout() {
       .substring(2, 15);
 
   const handleSubmit = async (e) => {
+    fetch("/", {
+      method: "POST",
+      headers: { "Content-Type": "application/x-www-form-urlencoded" },
+      body: encode({ "form-name": "order", cartTotoal })
+    })
+      .then(() => alert("Success!"))
+      .catch((error) => alert(error));
+
     e.preventDefault();
-    // Checks that cart has some products in it
-    if (cart.length > 0) {
-      try {
-        const res = await fetch("/", {
-          method: "POST",
-          headers: { "Content-Type": "application/x-www-form-urlencoded" },
-          body: encode({
-            "form-name": "order",
-            orderId,
-            name,
-            number,
-            email,
-            address,
-            alternateNumber,
-            landmark,
-            orderProductDetails: { cart, cartSubTotal, cartTax, cartTotoal }
-          })
-        });
-        if (res.status) {
-          await updateSuccess(true);
-          // Clean the cart if order placed
-          clearCart();
-        }
-        // Update the submitted state
-        if (isSuccess) {
-          setTimeout(() => updateSuccess(false), 2000);
-        }
-      } catch (error) {
-        updateSuccess(false);
-        alert("There's an error.");
-      }
-    } else {
-      updateError(true);
-      if (isSuccess) {
-        setTimeout(() => updateError(false), 2000);
-      }
-    }
   };
 
   return (
@@ -95,9 +66,7 @@ export default function checkout() {
                 name="order"
                 data-netlify="true"
                 netlify-honeypot="bot-field"
-                netlify
               >
-                <input type="hidden" name="form-name" value="order" />
                 <label>
                   Name
                   <input
