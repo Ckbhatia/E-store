@@ -5,7 +5,6 @@ import { mainProducts } from "./data/mainProducts";
 
 export const ProductContext = React.createContext();
 
-//Provider
 export class ProductProvider extends Component {
   state = {
     products: [],
@@ -19,6 +18,16 @@ export class ProductProvider extends Component {
   };
 
   componentDidMount() {
+    const userData = JSON.parse(localStorage.getItem("userData"));
+    if (userData) {
+      // update the cart
+      this.setState({
+        cart: userData.userCart,
+        totals: userData.totals,
+        subTotal: userData.subTotal,
+        delivery: userData.delivery
+      });
+    }
     this.setProducts();
   }
 
@@ -77,7 +86,13 @@ export class ProductProvider extends Component {
       },
       () => {
         this.addTotals();
-      }
+      },
+      localStorage.setItem(
+        "userData",
+        JSON.stringify({
+          userCart: [...this.state.cart, product]
+        })
+      )
     );
   };
 
@@ -186,6 +201,16 @@ export class ProductProvider extends Component {
         return { cart: [], subTotal: 0, totals: 0, delivery: 0 };
       },
       () => {
+        // this.setProducts();
+        localStorage.setItem(
+          "userData",
+          JSON.stringify({
+            userCart: this.state.cart,
+            totals: this.state.totals,
+            subTotal: this.state.subTotal,
+            delivery: this.state.deliver
+          })
+        );
         this.addTotals();
       }
     );
@@ -198,13 +223,26 @@ export class ProductProvider extends Component {
     // const tempTax = subTotal * 0.1;
     // const deliveryCharge = parseFloat(tempTax.toFixed(2));
     const total = subTotal + deliveryCharge;
-    this.setState(() => {
-      return {
-        cartSubTotal: subTotal,
-        delivery: deliveryCharge,
-        cartTotal: total
-      };
-    });
+    this.setState(
+      () => {
+        return {
+          cartSubTotal: subTotal,
+          delivery: deliveryCharge,
+          cartTotal: total
+        };
+      },
+      () => {
+        localStorage.setItem(
+          "userData",
+          JSON.stringify({
+            userCart: this.state.cart,
+            totals: this.state.cartSubTotal,
+            subTotal: this.state.cartTotal,
+            delivery: this.state.delivery
+          })
+        );
+      }
+    );
   };
   render() {
     return (
