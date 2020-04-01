@@ -32,7 +32,7 @@ export default function checkout() {
     fetch("/", {
       method: "POST",
       headers: { "Content-Type": "application/x-www-form-urlencoded" },
-      body: encode({ "form-name": "order", "ordered-data": "one bag" })
+      body: encode({ "form-name": "order", email })
     })
       .then(() => alert("Success!"))
       .catch((error) => alert(error));
@@ -62,12 +62,10 @@ export default function checkout() {
               <form
                 className="form"
                 onSubmit={handleSubmit}
-                method="post"
+                method="POST"
                 name="order"
                 data-netlify="true"
-                netlify-honeypot="bot-field"
               >
-                <input type="hidden" name="form-name" value="order" />
                 <label>
                   Name
                   <input
