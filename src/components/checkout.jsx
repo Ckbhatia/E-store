@@ -65,6 +65,7 @@ export default function checkout() {
                 method="POST"
                 name="order"
                 data-netlify="true"
+                action="/order/success"
               >
                 <label>
                   Name
