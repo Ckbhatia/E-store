@@ -2,7 +2,7 @@ const products = {
   vegetables: [
     {
       id: 1,
-      title: "Onion - प्याज )",
+      title: "Onion - प्याज ",
       quantity: "1 kg",
       img: "img/vegetables/onion.jpg",
       price: 33,
@@ -112,11 +112,11 @@ const products = {
 
   fruits: [
     {
-      id: 1,
-      title: "Fresh Onion ( प्याज )",
+      id: 101,
+      title: "Lalbagh mango",
       quantity: "1 kg",
-      img: "img/onion.jpg",
-      price: 33,
+      img: "img/fruits/lalbagh-mango-sindhura.jpg",
+      price: 169,
       company: "BLT STORE",
       info: "Fresh onions",
       inCart: false,
@@ -124,7 +124,7 @@ const products = {
       total: 0
     },
     {
-      id: 2,
+      id: 102,
       title: "Oreo Chocolatey",
       quantity: "50 g",
       img: "img/product02.jpeg",
@@ -137,7 +137,7 @@ const products = {
       total: 0
     },
     {
-      id: 3,
+      id: 103,
       title: "Unibic Assorted Cookies",
       quantity: "450 g, Pack of 6",
       img: "img/product03.jpeg",
@@ -150,7 +150,7 @@ const products = {
       total: 0
     },
     {
-      id: 4,
+      id: 104,
       title: "Britannia Premium Rusk",
       quantity: "273 g",
       img: "img/product04.jpeg",
@@ -163,7 +163,7 @@ const products = {
       total: 0
     },
     {
-      id: 5,
+      id: 105,
       title: "Parle Monaco Biscuits",
       quantity: "200 g",
       img: "img/product05.jpeg",
