@@ -20,7 +20,7 @@ export default function Checkout() {
   const [isSuccess, updateSuccess] = useState(false);
   const [hasError, updateError] = useState(false);
 
-  const { cart, cartSubTotal, cartTax, cartTotoal, clearCart } = useContext(
+  const { cart, cartSubTotal, delivery, cartTotal, clearCart } = useContext(
     ProductContext
   );
 
@@ -44,7 +44,7 @@ export default function Checkout() {
           alternate,
           address,
           landmark,
-          order: JSON.stringify({ cart, cartTax, cartSubTotal, cartTotoal })
+          order: JSON.stringify({ cart, delivery, cartSubTotal, cartTotal })
         })
       });
       if (res.status === 200) {
