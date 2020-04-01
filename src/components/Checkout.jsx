@@ -26,6 +26,27 @@ export default function Checkout() {
     ProductContext
   );
 
+  useEffect(() => {
+    const userData = JSON.parse(localStorage.getItem("userData"));
+    if (userData.userInfo) {
+      const {
+        name,
+        email,
+        number,
+        address,
+        landmark,
+        alternate
+      } = userData.userInfo;
+      // update the the user address/form
+      updateName(name);
+      updateEmail(email);
+      updateNumber(number);
+      updateAddress(address);
+      updateAlternate(alternate);
+      updateLandmark(landmark);
+    }
+  }, []);
+
   const orderId =
     Date.now() +
     Math.random()
@@ -33,6 +54,20 @@ export default function Checkout() {
       .substring(2, 15);
 
   const handleSubmit = async (e) => {
+    if (isChecked) {
+      // Save user info / address to localStorage to retain
+      localStorage.setItem(
+        "userData",
+        JSON.stringify({
+          userCart: cart,
+          totals: cartTotal,
+          subTotal: cartSubTotal,
+          delivery: delivery,
+          userInfo: { name, email, number, landmark, address, alternate }
+        })
+      );
+    }
+
     try {
       const res = await fetch("/", {
         method: "POST",
