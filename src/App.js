@@ -11,6 +11,7 @@ import { Switch, Route } from "react-router-dom";
 import Modal from "./components/Modal";
 import MainPage from "./components/MainPage";
 import Checkout from "./components/Checkout";
+import Support from "./components/Support";
 
 class App extends Component {
   render() {
@@ -25,6 +26,7 @@ class App extends Component {
           <Route path="/details" component={Details} />
           <Route path="/cart" component={Cart} />
           <Route path="/checkout" component={Checkout} />
+          <Route path="/support" component={Support} />
           <Route component={Default} />
         </Switch>
         <Modal />
