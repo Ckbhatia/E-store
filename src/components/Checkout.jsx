@@ -58,7 +58,6 @@ export default function Checkout() {
       .substring(2, 15);
 
   const handleSubmit = async (e) => {
-    e.preventDefault();
     if (isChecked) {
       // Save user info / address to localStorage to retain
       localStorage.setItem(
@@ -98,6 +97,7 @@ export default function Checkout() {
       updateError(true);
       setTimeout(() => updateError(false), 2000);
     }
+    e.preventDefault();
   };
 
   return (
@@ -206,7 +206,7 @@ export default function Checkout() {
                   type="checkbox"
                   label={
                     <>
-                      Agree with <Link to="/help">T&C</Link>
+                      Agree with <Link to="/support">T&C</Link>
                     </>
                   }
                 />
