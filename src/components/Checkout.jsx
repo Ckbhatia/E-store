@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useContext } from "react";
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 import Form from "react-bootstrap/Form";
 import { ProductContext } from "../Context";
@@ -19,6 +20,7 @@ export default function Checkout() {
   const [alternate, updateAlternate] = useState("");
   const [landmark, updateLandmark] = useState("");
   const [isChecked, updateCheck] = useState(true);
+  const [isTcChecked, updateTcChecked] = useState(true);
   const [isSuccess, updateSuccess] = useState(false);
   const [hasError, updateError] = useState(false);
 
@@ -100,6 +102,9 @@ export default function Checkout() {
 
   return (
     <div className="checkout-main-container">
+      <Header className="checkout-header wrapper">
+        <h3 className="checkout-heading">Delivery Address</h3>
+      </Header>
       <div className="form-main-container">
         <Div className="main-container wrapper">
           <div className="msg-txt-container">
@@ -194,7 +199,20 @@ export default function Checkout() {
                   checked={isChecked}
                   onChange={() => updateCheck((isChecked) => !isChecked)}
                   type="checkbox"
-                  label={`Save this`}
+                  label={`Save this Address`}
+                />
+                <Form.Check
+                  custom
+                  checked={isTcChecked}
+                  onChange={() =>
+                    updateTcChecked((isTcChecked) => !isTcChecked)
+                  }
+                  type="checkbox"
+                  label={
+                    <>
+                      Agree with <Link to="/help">T&C</Link>
+                    </>
+                  }
                 />
                 <input
                   className="submit-btn text-uppercase"
@@ -209,6 +227,15 @@ export default function Checkout() {
     </div>
   );
 }
+
+const Header = styled.div`
+  margin-top: 2rem;
+  .checkout-heading {
+    font-size: 1.6rem;
+    color: var(--MainDark);
+    text-transform: uppercase;
+  }
+`;
 
 const Div = styled.div`
   background-color: #fcfcfc;
