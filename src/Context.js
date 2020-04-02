@@ -25,8 +25,8 @@ export class ProductProvider extends Component {
       // update the cart
       this.setState({
         cart: userData.userCart,
-        totals: userData.totals,
-        subTotal: userData.subTotal,
+        cartTotal: userData.cartTotal,
+        cartSubTotal: userData.cartSubTotal,
         delivery: userData.delivery,
         userInfo: userData.userInfo
       });
@@ -35,8 +35,8 @@ export class ProductProvider extends Component {
         "userData",
         JSON.stringify({
           cart: this.state.cart,
-          totals: this.state.totals,
-          subTotal: this.state.subTotal,
+          cartTotal: this.state.cartTotal,
+          cartSubTotal: this.state.cartSubTotal,
           delivery: this.state.delivery,
           userInfo: this.state.userInfo
         })
@@ -223,7 +223,7 @@ export class ProductProvider extends Component {
           JSON.stringify({
             userCart: this.state.cart,
             totals: this.state.totals,
-            subTotal: this.state.subTotal,
+            cartSubTotal: this.state.cartSubTotal,
             delivery: this.state.delivery,
             userInfo: this.state.userInfo
           })
@@ -254,8 +254,8 @@ export class ProductProvider extends Component {
           "userData",
           JSON.stringify({
             userCart: this.state.cart,
-            totals: this.state.cartSubTotal,
-            subTotal: this.state.cartTotal,
+            cartTotal: this.state.cartTotal,
+            cartSubTotal: this.state.cartSubTotal,
             delivery: this.state.delivery,
             userInfo: this.state.userInfo
           })
