@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import styled from "styled-components";
 import Form from "react-bootstrap/Form";
 import { ProductContext } from "../Context";
+import OrderModal from "./OrderModal";
 
 const encode = (data) => {
   const formData = new FormData();
@@ -21,7 +22,8 @@ export default function Checkout() {
   const [landmark, updateLandmark] = useState("");
   const [isChecked, updateCheck] = useState(true);
   const [isTcChecked, updateTcChecked] = useState(true);
-  const [isSuccess, updateSuccess] = useState(false);
+  const [orderId, updateOrderId] = useState("");
+  const [modalShow, setModalShow] = useState(false);
   const [hasError, updateError] = useState(false);
 
   const { cart, cartSubTotal, delivery, cartTotal, clearCart } = useContext(
@@ -49,13 +51,14 @@ export default function Checkout() {
     }
   }, []);
 
-  const orderId =
+  const generateId =
     Date.now() +
     Math.random()
       .toString(36)
       .substring(2, 15);
 
   const handleSubmit = async (e) => {
+    e.preventDefault();
     if (isChecked) {
       // Save user info / address to localStorage to retain
       localStorage.setItem(
@@ -87,17 +90,14 @@ export default function Checkout() {
         })
       });
       if (res.status === 200) {
-        updateSuccess(true);
-        // Clean the cart
+        await updateOrderId(generateId);
+        setModalShow(true);
         clearCart();
-        setTimeout(() => updateSuccess(false), 2000);
       }
     } catch (error) {
       updateError(true);
       setTimeout(() => updateError(false), 2000);
     }
-
-    e.preventDefault();
   };
 
   return (
@@ -105,20 +105,16 @@ export default function Checkout() {
       <Header className="checkout-header wrapper">
         <h3 className="checkout-heading">Delivery Address</h3>
       </Header>
+      <OrderModal
+        cartdetails={[cart, delivery, cartSubTotal, cartTotal, orderId]}
+        show={modalShow}
+        onHide={() => setModalShow(false)}
+      />
       <div className="form-main-container">
         <Div className="main-container wrapper">
           <div className="msg-txt-container">
             {/* Show message on condition */}
-            {isSuccess && (
-              <span className="success-msg">
-                Order placed. OrderID: {orderId}
-              </span>
-            )}
-            {hasError && (
-              <span className="failed-msg">
-                Please add items to your cart or don't refresh your page
-              </span>
-            )}
+            {hasError && <span className="failed-msg">Please try again.</span>}
           </div>
           <div className="form-main-container">
             <div className="form-container flex-center">
@@ -254,22 +250,6 @@ const Div = styled.div`
     text-align: center;
     width: 100%;
     height: 100%;
-  }
-
-  .success-msg {
-    font-size: 1.2rem;
-    color: #fff;
-    padding: 1.2rem 0;
-    width: 100%;
-    background-color: #38c942;
-  }
-
-  .failed-msg {
-    font-size: 1.2rem;
-    color: #fff;
-    padding: 1.2rem 0;
-    width: 100%;
-    background-color: #e62412;
   }
 
   .failed-msg {
