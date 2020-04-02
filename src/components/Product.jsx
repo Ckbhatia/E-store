@@ -5,8 +5,14 @@ import { ProductContext } from "../Context";
 import PropTypes from "prop-types";
 
 export default function Product({ product }) {
-  const { handleDetail, addToCart, openModal } = useContext(ProductContext);
-  const { id, title, img, price, inCart, quantity } = product;
+  const {
+    handleDetail,
+    addToCart,
+    incrementItem,
+    decrementItem,
+    openModal
+  } = useContext(ProductContext);
+  const { id, title, img, price, inCart, count, quantity } = product;
 
   return (
     <ProductWrapper className="col-9 mx-auto col-md-6 col-lg-3 my-3">
@@ -26,28 +32,43 @@ export default function Product({ product }) {
               <span className="mr-1">₹</span>
               {price}
             </h5>
-            <button
-              className="cart-btn"
-              disabled={inCart ? true : false}
-              onClick={() => {
-                addToCart(id); //Add product to cart
-                // value.openModal(id);//Open modal when product get in cart
-              }}
-            >
-              {inCart ? (
+            {inCart ? (
+              <div className="cart-control-btn">
+                <button
+                  className="count-btn inc-btn"
+                  onClick={() => decrementItem(id)}
+                  title="Decrement"
+                >
+                  -
+                </button>
                 <Link
                   to="cart"
                   className="text-capitalize mb-0"
                   title="Go to cart"
                 >
-                  <button className="to-cart-btn">In Cart</button>
+                  <button className="to-cart-btn">{count} In Cart</button>
                 </Link>
-              ) : (
-                <span className="cart-btn-container" title="add to cart">
+                <button
+                  className="count-btn dec-btn"
+                  onClick={() => incrementItem(id)}
+                  title="Increment"
+                >
+                  +
+                </button>
+              </div>
+            ) : (
+              <span className="cart-btn-container">
+                <button
+                  onClick={() => {
+                    addToCart(id);
+                  }}
+                  className="cart-btn"
+                  title="add to cart"
+                >
                   <i className="fas fa-cart-plus" />
-                </span>
-              )}
-            </button>
+                </button>
+              </span>
+            )}
           </div>
         </div>
       </div>
@@ -104,10 +125,18 @@ const ProductWrapper = styled.div`
     color: #25a641;
     background: transparent;
     border: 1px solid #25a641;
-    border-radius: 2px;
     &:hover {
       background-color: #25a641;
       color: #fff;
+    }
+  }
+  .count-btn {
+    font-size: 1rem;
+    color: #c4c4c4;
+    background: transparent;
+    border: 1px solid #c4c4c4;
+    &:hover {
+      color: #6e6e6e;
     }
   }
   .img-container:hover .cart-btn {
