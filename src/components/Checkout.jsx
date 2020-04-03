@@ -92,14 +92,15 @@ export default function Checkout() {
         })
       });
       if (res.status === 200) {
+        e.preventDefault();
         await setModalShow(true);
         clearCart();
       }
     } catch (error) {
+      e.preventDefault();
       updateError(true);
       setTimeout(() => updateError(false), 2000);
     }
-    // e.preventDefault();
   };
 
   return (
@@ -126,7 +127,7 @@ export default function Checkout() {
                 method="POST"
                 name="order"
                 data-netlify="true"
-                action="/order/success"
+                // action="/order/success"
               >
                 <input type="hidden" name="form-name" value="order" />
 
