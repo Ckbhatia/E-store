@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { mainProducts } from "../data/mainProducts";
-import { bannerData } from "../data/banner";
+import { bannerData, bannerTwoData } from "../data/banner";
 import CaraouselShow from "./CarouselShow";
 
 export default function MainPage() {
@@ -34,6 +34,9 @@ export default function MainPage() {
                   );
                 })}
             </div>
+          </div>
+          <div className="main-banner">
+            <CaraouselShow bannerData={bannerTwoData} />
           </div>
         </div>
       </Div>
