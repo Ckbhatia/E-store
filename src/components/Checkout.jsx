@@ -92,7 +92,7 @@ export default function Checkout() {
         })
       });
       if (res.status === 200) {
-        e.preventDefault();
+        // e.preventDefault();
         await setModalShow(true);
         clearCart();
       }
