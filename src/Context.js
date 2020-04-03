@@ -214,7 +214,7 @@ export class ProductProvider extends Component {
   clearCart = () => {
     this.setState(
       () => {
-        return { cart: [], subTotal: 0, totals: 0, delivery: 0 };
+        return { cart: [], cartSubTotal: 0, cartTotal: 0, delivery: 0 };
       },
       () => {
         // this.setProducts();
@@ -222,7 +222,7 @@ export class ProductProvider extends Component {
           "userData",
           JSON.stringify({
             userCart: this.state.cart,
-            totals: this.state.totals,
+            cartTotal: this.state.cartTotal,
             cartSubTotal: this.state.cartSubTotal,
             delivery: this.state.delivery,
             userInfo: this.state.userInfo

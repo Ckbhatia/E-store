@@ -64,8 +64,8 @@ export default function Checkout() {
         "userData",
         JSON.stringify({
           userCart: cart,
-          totals: cartTotal,
-          subTotal: cartSubTotal,
+          cartTotal: cartTotal,
+          cartSubTotal: cartSubTotal,
           delivery: delivery,
           userInfo: { name, email, number, landmark, address, alternate }
         })
