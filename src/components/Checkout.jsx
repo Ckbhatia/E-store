@@ -92,7 +92,7 @@ export default function Checkout() {
         })
       });
       if (res.status === 200) {
-        setModalShow(true);
+        await setModalShow(true);
         clearCart();
       }
     } catch (error) {
@@ -126,6 +126,7 @@ export default function Checkout() {
                 method="POST"
                 name="order"
                 data-netlify="true"
+                action="/checkout"
               >
                 <input type="hidden" name="form-name" value="order" />
 
