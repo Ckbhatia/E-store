@@ -126,7 +126,7 @@ export default function Checkout() {
                 method="POST"
                 name="order"
                 data-netlify="true"
-                action="/checkout"
+                action="/order/success"
               >
                 <input type="hidden" name="form-name" value="order" />
 
