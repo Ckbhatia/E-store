@@ -73,9 +73,12 @@ export default function Checkout() {
     }
 
     try {
+      // Generate order Id
+      await updateOrderId(generateId);
+
       const res = await fetch("/", {
         method: "POST",
-        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        // headers: { "Content-Type": "application/x-www-form-urlencoded" },
         body: encode({
           "form-name": "order",
           orderId,
@@ -89,7 +92,6 @@ export default function Checkout() {
         })
       });
       if (res.status === 200) {
-        await updateOrderId(generateId);
         setModalShow(true);
         clearCart();
       }
