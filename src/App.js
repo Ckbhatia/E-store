@@ -10,8 +10,8 @@ import Default from "./components/Default";
 import { Switch, Route } from "react-router-dom";
 import Modal from "./components/Modal";
 import MainPage from "./components/MainPage";
-import { mainProducts } from "./data/mainProducts";
-import Checkout from "./components/checkout";
+import Checkout from "./components/Checkout";
+import Support from "./components/Support";
 
 class App extends Component {
   render() {
@@ -22,9 +22,11 @@ class App extends Component {
           <Route exact path="/" component={MainPage} />
           <Route path="/vegetables" component={ProductList} />
           <Route path="/fruits" component={ProductList} />
+          <Route path="/immunity" component={ProductList} />
           <Route path="/details" component={Details} />
           <Route path="/cart" component={Cart} />
           <Route path="/checkout" component={Checkout} />
+          <Route path="/support" component={Support} />
           <Route component={Default} />
         </Switch>
         <Modal />

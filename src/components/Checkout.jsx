@@ -1,7 +1,9 @@
 import React, { useState, useEffect, useContext } from "react";
+import { Link } from "react-router-dom";
 import styled from "styled-components";
-import { ProductContext } from "../Context";
 import Form from "react-bootstrap/Form";
+import { ProductContext } from "../Context";
+import OrderModal from "./OrderModal";
 
 const encode = (data) => {
   const formData = new FormData();
@@ -19,7 +21,9 @@ export default function Checkout() {
   const [alternate, updateAlternate] = useState("");
   const [landmark, updateLandmark] = useState("");
   const [isChecked, updateCheck] = useState(true);
-  const [isSuccess, updateSuccess] = useState(false);
+  const [isTcChecked, updateTcChecked] = useState(true);
+  const [orderId, updateOrderId] = useState("");
+  const [modalShow, setModalShow] = useState(false);
   const [hasError, updateError] = useState(false);
 
   const { cart, cartSubTotal, delivery, cartTotal, clearCart } = useContext(
@@ -47,7 +51,7 @@ export default function Checkout() {
     }
   }, []);
 
-  const orderId =
+  const generateId =
     Date.now() +
     Math.random()
       .toString(36)
@@ -60,8 +64,8 @@ export default function Checkout() {
         "userData",
         JSON.stringify({
           userCart: cart,
-          totals: cartTotal,
-          subTotal: cartSubTotal,
+          cartTotal: cartTotal,
+          cartSubTotal: cartSubTotal,
           delivery: delivery,
           userInfo: { name, email, number, landmark, address, alternate }
         })
@@ -69,6 +73,9 @@ export default function Checkout() {
     }
 
     try {
+      // Generate order Id
+      await updateOrderId(generateId);
+
       const res = await fetch("/", {
         method: "POST",
         // headers: { "Content-Type": "application/x-www-form-urlencoded" },
@@ -85,35 +92,31 @@ export default function Checkout() {
         })
       });
       if (res.status === 200) {
-        updateSuccess(true);
-        // Clear the cart
+        setModalShow(true);
         clearCart();
-        setTimeout(() => updateSuccess(false), 2000);
       }
     } catch (error) {
       updateError(true);
       setTimeout(() => updateError(false), 2000);
     }
-
     e.preventDefault();
   };
 
   return (
     <div className="checkout-main-container">
+      <Header className="checkout-header wrapper">
+        <h3 className="checkout-heading">Delivery Address</h3>
+      </Header>
+      <OrderModal
+        cartdetails={[cart, delivery, cartSubTotal, cartTotal, orderId]}
+        show={modalShow}
+        onHide={() => setModalShow(false)}
+      />
       <div className="form-main-container">
         <Div className="main-container wrapper">
           <div className="msg-txt-container">
             {/* Show message on condition */}
-            {isSuccess && (
-              <span className="success-msg">
-                Order placed. OrderID: {orderId}
-              </span>
-            )}
-            {hasError && (
-              <span className="failed-msg">
-                Please add items to your cart or don't refresh your page
-              </span>
-            )}
+            {hasError && <span className="failed-msg">Please try again.</span>}
           </div>
           <div className="form-main-container">
             <div className="form-container flex-center">
@@ -123,7 +126,6 @@ export default function Checkout() {
                 method="POST"
                 name="order"
                 data-netlify="true"
-                // action="/order/success"
               >
                 <input type="hidden" name="form-name" value="order" />
 
@@ -196,7 +198,20 @@ export default function Checkout() {
                   checked={isChecked}
                   onChange={() => updateCheck((isChecked) => !isChecked)}
                   type="checkbox"
-                  label={`Save this`}
+                  label={`Save this Address`}
+                />
+                <Form.Check
+                  custom
+                  checked={isTcChecked}
+                  onChange={() =>
+                    updateTcChecked((isTcChecked) => !isTcChecked)
+                  }
+                  type="checkbox"
+                  label={
+                    <>
+                      Agree with <Link to="/support">T&C</Link>
+                    </>
+                  }
                 />
                 <input
                   className="submit-btn text-uppercase"
@@ -211,6 +226,15 @@ export default function Checkout() {
     </div>
   );
 }
+
+const Header = styled.div`
+  margin-top: 2rem;
+  .checkout-heading {
+    font-size: 1.6rem;
+    color: var(--MainDark);
+    text-transform: uppercase;
+  }
+`;
 
 const Div = styled.div`
   background-color: #fcfcfc;
@@ -229,22 +253,6 @@ const Div = styled.div`
     text-align: center;
     width: 100%;
     height: 100%;
-  }
-
-  .success-msg {
-    font-size: 1.2rem;
-    color: #fff;
-    padding: 1.2rem 0;
-    width: 100%;
-    background-color: #38c942;
-  }
-
-  .failed-msg {
-    font-size: 1.2rem;
-    color: #fff;
-    padding: 1.2rem 0;
-    width: 100%;
-    background-color: #e62412;
   }
 
   .failed-msg {

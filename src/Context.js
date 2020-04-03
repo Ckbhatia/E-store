@@ -15,7 +15,8 @@ export class ProductProvider extends Component {
     modalProduct: detailProduct,
     cartSubTotal: 0,
     delivery: 0,
-    cartTotal: 0
+    cartTotal: 0,
+    userInfo: null
   };
 
   componentDidMount() {
@@ -24,24 +25,27 @@ export class ProductProvider extends Component {
       // update the cart
       this.setState({
         cart: userData.userCart,
-        totals: userData.totals,
-        subTotal: userData.subTotal,
+        cartTotal: userData.cartTotal,
+        cartSubTotal: userData.cartSubTotal,
         delivery: userData.delivery,
         userInfo: userData.userInfo
       });
+    } else {
+      localStorage.setItem(
+        "userData",
+        JSON.stringify({
+          cart: this.state.cart,
+          cartTotal: this.state.cartTotal,
+          cartSubTotal: this.state.cartSubTotal,
+          delivery: this.state.delivery,
+          userInfo: this.state.userInfo
+        })
+      );
     }
     this.setProducts();
   }
 
   setProducts = () => {
-    // let tempProducts = [];
-    // storeProducts.forEach((item) => {
-    //   const singleItem = { ...item };
-    //   tempProducts = [...tempProducts, singleItem];
-    // });
-    // this.setState(() => {
-    //   return { products: tempProducts };
-    // });
     let tempProducts = [];
 
     let tempCategories = [];
@@ -91,9 +95,6 @@ export class ProductProvider extends Component {
     const price = product.price;
     product.total = price;
 
-    // Retrive userInfo
-    const { userInfo } = JSON.parse(localStorage.getItem("userData"));
-
     this.setState(
       () => {
         return { products: tempProducts, cart: [...this.state.cart, product] };
@@ -105,7 +106,7 @@ export class ProductProvider extends Component {
         "userData",
         JSON.stringify({
           userCart: [...this.state.cart, product],
-          userInfo
+          userInfo: this.state.userInfo
         })
       )
     );
@@ -215,7 +216,7 @@ export class ProductProvider extends Component {
 
     this.setState(
       () => {
-        return { cart: [], subTotal: 0, totals: 0, delivery: 0 };
+        return { cart: [], cartSubTotal: 0, cartTotal: 0, delivery: 0 };
       },
       () => {
         // this.setProducts();
@@ -223,10 +224,10 @@ export class ProductProvider extends Component {
           "userData",
           JSON.stringify({
             userCart: this.state.cart,
-            totals: this.state.totals,
-            subTotal: this.state.subTotal,
+            cartTotal: this.state.cartTotal,
+            cartSubTotal: this.state.cartSubTotal,
             delivery: this.state.delivery,
-            userInfo
+            userInfo: this.state.userInfo
           })
         );
         this.addTotals();
@@ -242,8 +243,6 @@ export class ProductProvider extends Component {
     // const deliveryCharge = parseFloat(tempTax.toFixed(2));
     const total = subTotal + deliveryCharge;
 
-    const { userInfo } = JSON.parse(localStorage.getItem("userData"));
-
     this.setState(
       () => {
         return {
@@ -257,10 +256,10 @@ export class ProductProvider extends Component {
           "userData",
           JSON.stringify({
             userCart: this.state.cart,
-            totals: this.state.cartSubTotal,
-            subTotal: this.state.cartTotal,
+            cartTotal: this.state.cartTotal,
+            cartSubTotal: this.state.cartSubTotal,
             delivery: this.state.delivery,
-            userInfo
+            userInfo: this.state.userInfo
           })
         );
       }

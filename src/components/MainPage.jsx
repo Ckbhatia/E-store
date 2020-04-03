@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { mainProducts } from "../data/mainProducts";
+import { bannerData } from "../data/banner";
 import CaraouselShow from "./CarouselShow";
 
 export default function MainPage() {
@@ -10,27 +11,29 @@ export default function MainPage() {
       <Div className="main-page-main-container wrapper">
         <div className="main-content flex-center">
           <div className="main-banner">
-            <CaraouselShow />
+            <CaraouselShow bannerData={bannerData} />
           </div>
-          <div className="main-products-category">
-            {mainProducts &&
-              mainProducts.map((product) => {
-                return (
-                  <Link
-                    key={product.id}
-                    to={product.category}
-                    className="product-one-link"
-                  >
-                    <div className="product-card-container product-one">
-                      <img
-                        src={product.img}
-                        alt={product.title}
-                        className="main-product-cate-img"
-                      />
-                    </div>
-                  </Link>
-                );
-              })}
+          <div className="container-fluid">
+            <div className="main-products-category row">
+              {mainProducts &&
+                mainProducts.map((product) => {
+                  return (
+                    <Link
+                      key={product.id}
+                      to={product.category}
+                      className="product-one-link col-6 col-md-4"
+                    >
+                      <div className="product-card-container product">
+                        <img
+                          src={product.img}
+                          alt={product.title}
+                          className="main-product-cate-img"
+                        />
+                      </div>
+                    </Link>
+                  );
+                })}
+            </div>
           </div>
         </div>
       </Div>
@@ -45,18 +48,17 @@ const Div = styled.div`
     justify-content: center;
     width: 100%;
     margin-top: 1rem;
+    margin-bottom: 2rem;
   }
 
   .main-products-category {
-    display: flex;
-    justify-content: space-evenly;
-    // flex-wrap: wrap;
-    margin: 2rem 1rem 1rem 1rem;
+    // margin: 2rem 1rem 1rem 1rem;
+    margin-bottom: 2rem;
   }
 
   .product-one-link {
     text-decoration: none;
-    margin: 0.5rem;
+    margin: 0.5rem 0;
   }
 
   .product-card-container {
