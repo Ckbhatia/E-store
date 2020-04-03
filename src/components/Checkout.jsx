@@ -99,7 +99,7 @@ export default function Checkout() {
       updateError(true);
       setTimeout(() => updateError(false), 2000);
     }
-    e.preventDefault();
+    // e.preventDefault();
   };
 
   return (
