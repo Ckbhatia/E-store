@@ -4,7 +4,7 @@ import styled from "styled-components";
 // import PayPalButton from "./PayPalButton";
 
 export default function CartTotals({ value, history }) {
-  const { cartSubTotal, cartTax, cartTotal, clearCart } = value;
+  const { cartSubTotal, delivery, cartTotal, clearCart } = value;
 
   return (
     <React.Fragment>
@@ -26,7 +26,7 @@ export default function CartTotals({ value, history }) {
             </h5>
             <h5>
               <span className="text-title">Delivery :</span>
-              <strong>₹ {cartTax}</strong>
+              <strong>₹ {delivery}</strong>
             </h5>
             <h5>
               <span className="text-title">total :</span>
