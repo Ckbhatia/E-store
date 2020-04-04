@@ -1,10 +1,13 @@
 import React, { useContext } from "react";
-import { ProductConsumer, ProductContext } from "../Context";
+import { ProductContext } from "../Context";
 import { Link } from "react-router-dom";
+import styled from "styled-components";
 import { ButtonContainer } from "./Button";
 
 export default function Details() {
-  const { detailProduct, addToCart } = useContext(ProductContext);
+  const { detailProduct, addToCart, incrementItem, decrementItem } = useContext(
+    ProductContext
+  );
   const {
     id,
     company,
@@ -13,7 +16,9 @@ export default function Details() {
     price,
     quantity,
     title,
-    inCart
+    inCart,
+    inStock,
+    count,
   } = detailProduct;
   return (
     <>
@@ -37,25 +42,51 @@ export default function Details() {
                 </strong>
               </h4>
               <p className="text-muted lead">{info}</p>
-              <div>
-                <Link to="/">
+              <div className="btn-link-container d-flex justify-evenly align-items-center">
+                <Link title="Go to home" to="/">
                   <ButtonContainer cart>Home</ButtonContainer>
                 </Link>
-                <ButtonContainer
-                  cart
-                  disabled={inCart ? true : false}
-                  onClick={() => {
-                    addToCart(id);
-                  }}
-                >
+                <ButtonWrapper className="btn-container">
                   {inCart ? (
-                    "inCart"
-                  ) : (
-                    <span className="cart-btn-container" title="add to cart">
-                      <i className="fas fa-cart-plus" />
+                    <div className="cart-control-btn">
+                      <button
+                        className="count-btn inc-btn"
+                        onClick={() => decrementItem(id)}
+                        title="Decrement"
+                      >
+                        -
+                      </button>
+                      <Link
+                        to="cart"
+                        className="text-capitalize mb-0"
+                        title="Go to cart"
+                      >
+                        <button className="to-cart-btn">{count} In Cart</button>
+                      </Link>
+                      <button
+                        className="count-btn dec-btn"
+                        onClick={() => incrementItem(id)}
+                        title="Increment"
+                      >
+                        +
+                      </button>
+                    </div>
+                  ) : inStock ? (
+                    <span className="cart-btn-container">
+                      <button
+                        onClick={() => {
+                          addToCart(id);
+                        }}
+                        className="cart-btn"
+                        title="add to cart"
+                      >
+                        <i className="fas fa-cart-plus" />
+                      </button>
                     </span>
+                  ) : (
+                    <span className="stock-out-text">Out of Stock</span>
                   )}
-                </ButtonContainer>
+                </ButtonWrapper>
               </div>
             </div>
           </div>
@@ -64,3 +95,45 @@ export default function Details() {
     </>
   );
 }
+
+const ButtonWrapper = styled.div`
+  margin: 1rem 0;
+  .cart-btn {
+    background-color: transparent;
+    border: none;
+    color: var(--MainGreen);
+    font-size: 1.4rem;
+  }
+
+  .to-cart-btn {
+    font-size: 1rem;
+    color: #25a641;
+    background: transparent;
+    border: 1px solid #25a641;
+    &:hover {
+      background-color: #25a641;
+      color: #fff;
+    }
+  }
+  .count-btn {
+    font-size: 1rem;
+    color: #c4c4c4;
+    background: transparent;
+    // border: 1px solid #c4c4c4;
+    border: 1px solid #c4c4c4;
+    &:hover {
+      color: #6e6e6e;
+    }
+  }
+  .inc-btn {
+    border-right: none;
+  }
+  .dec-btn {
+    border-left: none;
+  }
+
+  .stock-out-text {
+    font-size: 1.2rem;
+    color: #ff3131;
+  }
+`;
