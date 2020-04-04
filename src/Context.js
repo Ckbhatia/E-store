@@ -66,9 +66,26 @@ export class ProductProvider extends Component {
     });
   };
 
-  filterProducts = (category) => {
+  filterProducts = async (category) => {
     let tempProducts = [];
     tempProducts = products[category];
+
+    // Retain products inCart status and count values throughout the page refresh
+    const userData = JSON.parse(localStorage.getItem("userData"));
+    if (userData && userData.userCart) {
+      tempProducts.forEach((item) => {
+        userData.userCart.forEach((product) => {
+          if (item.id === product.id) {
+            item.inCart = product.inCart;
+            item.count = product.count;
+            this.setState(() => {
+              return { products: tempProducts };
+            });
+          }
+        });
+      });
+    }
+
     this.setState(() => {
       return { products: tempProducts };
     });
