@@ -22,6 +22,7 @@ export default function Checkout() {
   const [landmark, updateLandmark] = useState("");
   const [isChecked, updateCheck] = useState(true);
   const [isTcChecked, updateTcChecked] = useState(true);
+  const [additional, updateAdditional] = useState("");
   const [orderId, updateOrderId] = useState("");
   const [modalShow, setModalShow] = useState(false);
   const [hasError, updateError] = useState(false);
@@ -39,7 +40,7 @@ export default function Checkout() {
         number,
         address,
         landmark,
-        alternate
+        alternate,
       } = userData.userInfo;
       // update the the user address/form
       updateName(name);
@@ -51,11 +52,7 @@ export default function Checkout() {
     }
   }, []);
 
-  const generateId =
-    Date.now() +
-    Math.random()
-      .toString(36)
-      .substring(2, 15);
+  const generateId = Date.now() + Math.random().toString(36).substring(2, 15);
 
   const handleSubmit = async (e) => {
     if (isChecked) {
@@ -67,7 +64,15 @@ export default function Checkout() {
           cartTotal: cartTotal,
           cartSubTotal: cartSubTotal,
           delivery: delivery,
-          userInfo: { name, email, number, landmark, address, alternate }
+          userInfo: {
+            name,
+            email,
+            number,
+            landmark,
+            address,
+            alternate,
+            additional,
+          },
         })
       );
     }
@@ -88,8 +93,8 @@ export default function Checkout() {
           alternate,
           address,
           landmark,
-          order: JSON.stringify({ cart, delivery, cartSubTotal, cartTotal })
-        })
+          order: JSON.stringify({ cart, delivery, cartSubTotal, cartTotal }),
+        }),
       });
       if (res.status === 200) {
         setModalShow(true);
@@ -192,6 +197,16 @@ export default function Checkout() {
                   value={alternate}
                   onChange={(e) => updateAlternate(e.target.value)}
                 />
+                <textarea
+                  type="textarea"
+                  name="additional"
+                  className="input"
+                  placeholder="Additional note: feel free to leave your additional note here.
+                  For Ex: You can be more specific about your groceries order."
+                  value={additional}
+                  required
+                  onChange={(e) => updateAdditional(e.target.value)}
+                ></textarea>
                 <Form.Check
                   custom
                   checked={isChecked}
