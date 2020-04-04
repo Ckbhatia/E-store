@@ -100,6 +100,7 @@ const ProductWrapper = styled.div`
 
   .card-footer {
     // min-height: 100px;
+    padding: 0.75rem;
   }
 
   .img-container {
@@ -126,7 +127,7 @@ const ProductWrapper = styled.div`
   }
 
   .to-cart-btn {
-    font-size: 1rem;
+    font-size: 0.9rem;
     color: #25a641;
     background: transparent;
     border: 1px solid #25a641;
@@ -136,14 +137,22 @@ const ProductWrapper = styled.div`
     }
   }
   .count-btn {
-    font-size: 1rem;
+    font-size: 0.9rem;
     color: #c4c4c4;
     background: transparent;
+    // border: 1px solid #c4c4c4;
     border: 1px solid #c4c4c4;
     &:hover {
       color: #6e6e6e;
     }
   }
+  .inc-btn {
+    border-right: none;
+  }
+  .dec-btn {
+    border-left: none;
+  }
+
   .img-container:hover .cart-btn {
     transform: translate(0, 0);
   }

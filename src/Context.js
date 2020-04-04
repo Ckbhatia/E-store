@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { storeProducts, detailProduct } from "./data";
+import { detailProduct } from "./data";
 import products from "./data/products";
 import { mainProducts } from "./data/mainProducts";
 
@@ -16,7 +16,7 @@ export class ProductProvider extends Component {
     cartSubTotal: 0,
     delivery: 0,
     cartTotal: 0,
-    userInfo: null
+    userInfo: null,
   };
 
   componentDidMount() {
@@ -28,7 +28,7 @@ export class ProductProvider extends Component {
         cartTotal: userData.cartTotal,
         cartSubTotal: userData.cartSubTotal,
         delivery: userData.delivery,
-        userInfo: userData.userInfo
+        userInfo: userData.userInfo,
       });
     } else {
       localStorage.setItem(
@@ -38,7 +38,7 @@ export class ProductProvider extends Component {
           cartTotal: this.state.cartTotal,
           cartSubTotal: this.state.cartSubTotal,
           delivery: this.state.delivery,
-          userInfo: this.state.userInfo
+          userInfo: this.state.userInfo,
         })
       );
     }
@@ -106,7 +106,7 @@ export class ProductProvider extends Component {
         "userData",
         JSON.stringify({
           userCart: [...this.state.cart, product],
-          userInfo: this.state.userInfo
+          userInfo: this.state.userInfo,
         })
       )
     );
@@ -141,7 +141,7 @@ export class ProductProvider extends Component {
     this.setState(
       () => {
         return {
-          cart: [...tempCart]
+          cart: [...tempCart],
         };
       },
       () => {
@@ -172,7 +172,7 @@ export class ProductProvider extends Component {
       this.setState(
         () => {
           return {
-            cart: [...tempCart]
+            cart: [...tempCart],
           };
         },
         () => {
@@ -201,7 +201,7 @@ export class ProductProvider extends Component {
       () => {
         return {
           cart: [...tempCart],
-          products: [...tempProducts]
+          products: [...tempProducts],
         };
       },
       () => {
@@ -225,7 +225,7 @@ export class ProductProvider extends Component {
             cartTotal: this.state.cartTotal,
             cartSubTotal: this.state.cartSubTotal,
             delivery: this.state.delivery,
-            userInfo: this.state.userInfo
+            userInfo: this.state.userInfo,
           })
         );
         this.addTotals();
@@ -233,10 +233,12 @@ export class ProductProvider extends Component {
     );
   };
 
-  addTotals = (deliveryCharge = 0) => {
+  addTotals = () => {
     // Make changes according to the data
     let subTotal = 0;
     this.state.cart.map((item) => (subTotal += item.total));
+    // Delivery charge
+    let deliveryCharge = 15;
     // const tempTax = subTotal * 0.1;
     // const deliveryCharge = parseFloat(tempTax.toFixed(2));
     const total = subTotal + deliveryCharge;
@@ -246,7 +248,7 @@ export class ProductProvider extends Component {
         return {
           cartSubTotal: subTotal,
           delivery: deliveryCharge,
-          cartTotal: total
+          cartTotal: total,
         };
       },
       () => {
@@ -257,7 +259,7 @@ export class ProductProvider extends Component {
             cartTotal: this.state.cartTotal,
             cartSubTotal: this.state.cartSubTotal,
             delivery: this.state.delivery,
-            userInfo: this.state.userInfo
+            userInfo: this.state.userInfo,
           })
         );
       }
@@ -276,7 +278,7 @@ export class ProductProvider extends Component {
           decrementItem: this.decrementItem,
           removeItem: this.removeItem,
           clearCart: this.clearCart,
-          filterProducts: this.filterProducts
+          filterProducts: this.filterProducts,
         }}
       >
         {this.props.children}
