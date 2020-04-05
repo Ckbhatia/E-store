@@ -234,7 +234,7 @@ export class ProductProvider extends Component {
         return { cart: [], cartSubTotal: 0, cartTotal: 0, delivery: 0 };
       },
       () => {
-        // this.setProducts();
+        this.setProducts();
         localStorage.setItem(
           "userData",
           JSON.stringify({
