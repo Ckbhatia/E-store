@@ -237,24 +237,30 @@ export default function Checkout() {
                     </>
                   }
                 />
-                <button
-                  className="submit-btn text-uppercase"
-                  type="submit"
-                  value="Order and Deliver here"
-                >
-                  {" "}
-                  {isFetching ? (
+                {isFetching ? (
+                  <button
+                    className="submit-btn text-uppercase"
+                    type="submit"
+                    value="Order and Deliver here"
+                  >
                     <Spinner
                       as="span"
                       animation="border"
                       size="sm"
                       role="status"
                       aria-hidden="true"
-                    />
-                  ) : (
-                    "Submit"
-                  )}
-                </button>
+                    />{" "}
+                    Order and Deliver here
+                  </button>
+                ) : (
+                  <button
+                    className="submit-btn text-uppercase"
+                    type="submit"
+                    value="Order and Deliver here"
+                  >
+                    Order and Deliver here
+                  </button>
+                )}
               </form>
             </div>
           </div>
