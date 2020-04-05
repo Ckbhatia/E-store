@@ -1,6 +1,5 @@
 import React, { useState, useEffect, useContext } from "react";
 import { Link } from "react-router-dom";
-import axios from "axios";
 import styled from "styled-components";
 import { Form, Spinner } from "react-bootstrap";
 import { ProductContext } from "../Context";
@@ -83,20 +82,26 @@ export default function Checkout() {
 
       updateFetching(true);
 
-      const { status } = await axios.post(
+      const { status } = await fetch(
         "https://localstore04.herokuapp.com/api/v1/order",
         {
-          orderId: generateId,
-          name,
-          number,
-          email,
-          alternate,
-          address,
-          landmark,
-          cart,
-          delivery,
-          cartSubTotal,
-          cartTotal,
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            orderId: generateId,
+            name,
+            number,
+            email,
+            alternate,
+            address,
+            landmark,
+            cart,
+            delivery,
+            cartSubTotal,
+            cartTotal,
+          }),
         }
       );
       if (status === 201) {
