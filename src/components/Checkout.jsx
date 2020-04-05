@@ -1,17 +1,10 @@
 import React, { useState, useEffect, useContext } from "react";
 import { Link } from "react-router-dom";
+import axios from "axios";
 import styled from "styled-components";
 import Form from "react-bootstrap/Form";
 import { ProductContext } from "../Context";
 import OrderModal from "./OrderModal";
-
-const encode = (data) => {
-  const formData = new FormData();
-  Object.keys(data).forEach((k) => {
-    formData.append(k, data[k]);
-  });
-  return formData;
-};
 
 export default function Checkout() {
   const [name, updateName] = useState("");
@@ -55,6 +48,8 @@ export default function Checkout() {
   const generateId = Date.now() + Math.random().toString(36).substring(2, 15);
 
   const handleSubmit = async (e) => {
+    e.preventDefault();
+
     if (isChecked) {
       // Save user info / address to localStorage to retain
       localStorage.setItem(
@@ -81,30 +76,36 @@ export default function Checkout() {
       // Generate order Id
       await updateOrderId(generateId);
 
-      const res = await fetch("/", {
-        method: "POST",
-        // headers: { "Content-Type": "application/x-www-form-urlencoded" },
-        body: encode({
-          "form-name": "order",
-          orderId,
+      if (cart.length < 1) {
+        return cart.length;
+      }
+
+      const { status } = await axios.post(
+        "https://localstore04.herokuapp.com/api/v1/order",
+        {
+          orderId: generateId,
           name,
           number,
           email,
           alternate,
           address,
           landmark,
-          order: JSON.stringify({ cart, delivery, cartSubTotal, cartTotal }),
-        }),
-      });
-      if (res.status === 200) {
-        setModalShow(true);
+          cart,
+          delivery,
+          cartSubTotal,
+          cartTotal,
+        }
+      );
+      if (status === 201) {
+        await setModalShow(true);
         clearCart();
+      } else {
+        console.error("There's an error.");
       }
     } catch (error) {
       updateError(true);
       setTimeout(() => updateError(false), 2000);
     }
-    e.preventDefault();
   };
 
   return (
@@ -201,10 +202,9 @@ export default function Checkout() {
                   type="textarea"
                   name="additional"
                   className="input"
-                  placeholder="Additional note: feel free to leave your additional note here.
+                  placeholder="Additional note: ( Optional ) feel free to leave your additional note here.
                   For Ex: You can be more specific about your groceries order."
                   value={additional}
-                  required
                   onChange={(e) => updateAdditional(e.target.value)}
                 ></textarea>
                 <Form.Check
