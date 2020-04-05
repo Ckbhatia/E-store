@@ -2,7 +2,7 @@ import React, { useState, useEffect, useContext } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import styled from "styled-components";
-import Form from "react-bootstrap/Form";
+import { Form, Spinner } from "react-bootstrap";
 import { ProductContext } from "../Context";
 import OrderModal from "./OrderModal";
 
@@ -19,6 +19,7 @@ export default function Checkout() {
   const [orderId, updateOrderId] = useState("");
   const [modalShow, setModalShow] = useState(false);
   const [hasError, updateError] = useState(false);
+  const [isFetching, updateFetching] = useState(false);
 
   const { cart, cartSubTotal, delivery, cartTotal, clearCart } = useContext(
     ProductContext
@@ -80,6 +81,8 @@ export default function Checkout() {
         return cart.length;
       }
 
+      updateFetching(true);
+
       const { status } = await axios.post(
         "https://localstore04.herokuapp.com/api/v1/order",
         {
@@ -106,6 +109,8 @@ export default function Checkout() {
       updateError(true);
       setTimeout(() => updateError(false), 2000);
     }
+
+    updateFetching(false);
   };
 
   return (
@@ -227,11 +232,24 @@ export default function Checkout() {
                     </>
                   }
                 />
-                <input
+                <button
                   className="submit-btn text-uppercase"
                   type="submit"
                   value="Order and Deliver here"
-                />
+                >
+                  {" "}
+                  {isFetching ? (
+                    <Spinner
+                      as="span"
+                      animation="border"
+                      size="sm"
+                      role="status"
+                      aria-hidden="true"
+                    />
+                  ) : (
+                    "Submit"
+                  )}
+                </button>
               </form>
             </div>
           </div>
