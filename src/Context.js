@@ -46,29 +46,31 @@ export class ProductProvider extends Component {
   }
 
   setProducts = () => {
-    let tempProducts = [];
+    // let tempProducts = [...products];
+    // let arr = products;
+    // console.log(arr, "arr");
+    // let tempCategories = [];
 
-    let tempCategories = [];
+    // for (let k = 0; k < mainProducts.length; k++) {
+    //   tempCategories = tempCategories.concat(mainProducts[k].title);
+    // }
 
-    for (let k = 0; k < mainProducts.length; k++) {
-      tempCategories = tempCategories.concat(mainProducts[k].title);
-    }
-
-    tempCategories.forEach((category) => {
-      products[category].forEach((item) => {
-        const singleItem = { ...item };
-        tempProducts = [...tempProducts, singleItem];
-      });
-    });
+    // tempCategories.forEach((category) => {
+    //   products[category].forEach((item) => {
+    //     const singleItem = { ...item };
+    //     tempProducts = [...tempProducts, singleItem];
+    //   });
+    // });
 
     this.setState(() => {
-      return { products: tempProducts };
+      return { products: products };
     });
   };
 
   filterProducts = async (category) => {
     let tempProducts = [];
-    tempProducts = products[category];
+    // tempProducts = products[category];
+    tempProducts = products.filter((product) => product.category === category);
 
     // Retain products inCart status and count values throughout the page refresh
     const userData = JSON.parse(localStorage.getItem("userData"));
