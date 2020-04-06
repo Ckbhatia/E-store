@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 // import Logo from "../logo.svg";
-import logos from "../logos.png";
 import styled from "styled-components";
 import { ButtonContainer } from "./Button";
 import { TiSupport } from "react-icons/ti";
