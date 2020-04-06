@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-import Logo from "../logo.svg";
+// import Logo from "../logo.svg";
+import logos from "../logos.png";
 import styled from "styled-components";
 import { ButtonContainer } from "./Button";
 import { TiSupport } from "react-icons/ti";
@@ -9,14 +10,11 @@ export default class Navbar extends Component {
   render() {
     return (
       <Nav className="navbar navbar-expand-sm navbar-dark px-sm-5">
-        <div className="site-main">
-          <ul className="navbar-nav align-items-center">
-            <li className="nav-item">
-              <Link to="/" title="Home" className="nav-link">
-                <span className="nav-main-text">BLT Store</span>
-              </Link>
-            </li>
-          </ul>
+        <div className="site-main logo-container">
+          <Link to="/" title="Home" className="nav-link">
+            {/* <img src={logos} alt="logo" className="logo-img"></img> */}
+            <span className="nav-main-text">City Bazzar</span>
+          </Link>
         </div>
         <div className="nav-btn-container">
           <Link
@@ -45,6 +43,16 @@ const Nav = styled.nav`
   display: flex;
   justify-content: space-between;
 
+  // .logo-container {
+  //   width: 6%;
+  // }
+  // .logo-img {
+  //   width: 100%;
+  // }
+  .nav-main-text {
+    font-family: "Chewy", cursive;
+    letter-spacing: 1.5px;
+  }
   .nav-link {
     color: var(--MainWhite) !important;
     font-size: 1.3rem;
