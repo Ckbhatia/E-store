@@ -23,6 +23,13 @@ export const mainProducts = [
   {
     id: 4,
     title: "immunity",
+    img: "img/mainCategory/fastfood.jpg",
+    info: "Fast Food",
+    category: "fastfood",
+  },
+  {
+    id: 5,
+    title: "immunity",
     img: "img/mainCategory/groceries.jpg",
     info: "Fresh groceries",
     category: "groceries",
