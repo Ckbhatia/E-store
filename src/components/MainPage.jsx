@@ -4,6 +4,7 @@ import styled from "styled-components";
 import { mainProducts } from "../data/mainProducts";
 import { bannerData, bannerTwoData } from "../data/banner";
 import CaraouselShow from "./CarouselShow";
+import support from "../data/support";
 
 export default function MainPage() {
   return (
@@ -12,6 +13,9 @@ export default function MainPage() {
         <div className="main-content flex-center">
           <div className="main-banner">
             <CaraouselShow bannerData={bannerData} />
+          </div>
+          <div className="message-container text-center">
+            <p className="message-text">{support.message.text}</p>
           </div>
           <div className="container-fluid">
             <div className="main-products-category row">
@@ -52,6 +56,16 @@ const Div = styled.div`
     width: 100%;
     margin-top: 1rem;
     margin-bottom: 2rem;
+  }
+
+  .message-container {
+    width: 100%;
+    margin: 4rem 0;
+    background-color: white;
+    .message-text {
+      color: black;
+      font-size: 1.4rem;
+    }
   }
 
   .main-products-category {
