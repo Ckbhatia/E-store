@@ -228,13 +228,28 @@ export class ProductProvider extends Component {
     );
   };
 
+  resetProducts = () => {
+    const tempProducts = this.state.products.map((product) => {
+      if (product.inCart) {
+        product.inCart = false;
+        product.count = 0;
+        return product;
+      }
+      return product;
+    });
+
+    this.setState(() => {
+      return { products: tempProducts };
+    });
+  };
+
   clearCart = () => {
     this.setState(
       () => {
         return { cart: [], cartSubTotal: 0, cartTotal: 0, delivery: 0 };
       },
       () => {
-        this.setProducts();
+        this.resetProducts();
         localStorage.setItem(
           "userData",
           JSON.stringify({
