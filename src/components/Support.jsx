@@ -18,18 +18,55 @@ export default function Support() {
           <Col className="support-col mt-4 mb-4">
             <h3 className="support-sub-heading">Contact</h3>
             <p>
-              <MdCall /> {support.contact.phone}{" "}
+              <MdCall />{" "}
+              <a
+                href={`tel:${support.contact.phone}`}
+                rel="noopener noreferrer"
+                className="support-link phone-link"
+              >
+                Call
+              </a>
             </p>
             <p>
-              {support.contact.alternatePhone
-                ? `<MdCall /> ${support.contact.alternatePhone} {" "}`
-                : ""}
+              {support.contact.alternatePhone ? (
+                <p>
+                  <MdCall />
+                  <a
+                    href={`tel:${support.contact.alternatePhone}`}
+                    rel="noopener noreferrer"
+                    className="support-link whatsapp-link"
+                  >
+                    {" "}
+                    Call
+                  </a>
+                </p>
+              ) : (
+                ""
+              )}
             </p>
             <p>
-              <FaWhatsapp /> {support.contact.whatsapp}{" "}
+              <FaWhatsapp />
+              <a
+                href={`${support.contact.whatsapp}`}
+                rel="noopener noreferrer"
+                className="support-link whatsapp-link"
+                target="_blank"
+              >
+                {" "}
+                Whatsapp
+              </a>
             </p>
             <p>
-              <MdEmail /> {support.contact.email}
+              <MdEmail />
+              <a
+                href={`mailto:${support.contact.email}`}
+                rel="noopener noreferrer"
+                className="support-link email-link"
+                target="_blank"
+              >
+                {" "}
+                {support.contact.email}
+              </a>
             </p>
             <p>Please feel free to contact for feedback purpose also.</p>
           </Col>
@@ -183,4 +220,7 @@ export default function Support() {
 
 const ContainerWrapper = styled.div`
   color: #000;
+  .support-link {
+    color: #505050;
+  }
 `;
