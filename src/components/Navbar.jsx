@@ -19,7 +19,7 @@ export default class Navbar extends Component {
           <Link
             to="support"
             title="Support"
-            className="support-icon mr-3 ml-auto"
+            className="support-icon mr-2 ml-auto"
           >
             <TiSupport />
           </Link>
@@ -28,7 +28,7 @@ export default class Navbar extends Component {
               <span className="mr-2">
                 <i className="fas fa-cart-plus" />
               </span>
-              My cart
+              cart
             </ButtonContainer>
           </Link>
         </div>
@@ -56,6 +56,7 @@ const Nav = styled.nav`
     color: var(--MainWhite) !important;
     font-size: 1.3rem;
     text-transform: capitlize;
+    padding: 0.1rem;
   }
 
   .support-icon > svg {
