@@ -53,21 +53,3 @@ body {
   max-width: 1300px;
   margin: 0 auto;
 }
-
-@media all and (max-width: 992px) {
-  html {
-    font-size: 14px;
-  }
-}
-
-@media all and (max-width: 768px) {
-  html {
-    font-size: 12px;
-  }
-}
-
-@media all and (max-width: 600px) {
-  html {
-    font-size: 10px;
-  }
-}
