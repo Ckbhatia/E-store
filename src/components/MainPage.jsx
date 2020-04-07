@@ -61,10 +61,10 @@ const Div = styled.div`
   .message-container {
     width: 100%;
     margin: 4rem 0;
-    background-color: white;
+    background-color: #fcffc9;
     .message-text {
-      color: black;
-      font-size: 1.4rem;
+      color: #989898;
+      font-size: 1rem;
     }
   }
 
