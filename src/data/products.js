@@ -435,7 +435,7 @@ const products = [
     total: 0,
   },
   {
-    id: 109,
+    id: 1090,
     title: "Water-melon - तरबूज",
     quantity: "1 kg",
     img: "img/fruits/water-melon.jpg",
@@ -449,7 +449,7 @@ const products = [
     total: 0,
   },
   {
-    id: 201,
+    id: 2010,
     title: "Ginger",
     quantity: "1 kg",
     img: "img/vegetables/ginger.jpg",
@@ -463,7 +463,7 @@ const products = [
     total: 0,
   },
   {
-    id: 107,
+    id: 1070,
     title: "Papaya - पपीता",
     quantity: "1 Kg",
     img: "img/fruits/papaya.jpg",
@@ -477,7 +477,7 @@ const products = [
     total: 0,
   },
   {
-    id: 6,
+    id: 60,
     title: "Spinach - पालक",
     quantity: "500 g",
     img: "img/vegetables/spinach.jpg",
@@ -491,7 +491,7 @@ const products = [
     total: 0,
   },
   {
-    id: 7,
+    id: 70,
     title: "Garlic - लहशुन )",
     quantity: "1 kg",
     img: "img/vegetables/garlic.jpg",
@@ -505,7 +505,7 @@ const products = [
     total: 0,
   },
   {
-    id: 106,
+    id: 1060,
     title: "Orange - संतरा",
     quantity: "1 Kg",
     img: "img/fruits/orange.jpg",
