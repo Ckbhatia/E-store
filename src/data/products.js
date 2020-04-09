@@ -295,6 +295,36 @@ const products = [
   },
   {
     id: 101,
+    title: "Mango Almond- बादाम आम",
+    quantity: "1 kg",
+    img: "img/fruits/mango.jpg",
+    price: 136,
+    company: "BLT STORE",
+    category: "fruits",
+    info:
+      "The handpicked mangoes. Original product's size and color may very. Price might change day by day.",
+    inCart: false,
+    inStock: true,
+    count: 0,
+    total: 0,
+  },
+  {
+    id: 102,
+    title: "Mango Alphonso - हाफुस आम",
+    quantity: "1 kg",
+    img: "img/fruits/alphonso-mango.jpg",
+    price: 490,
+    company: "BLT STORE",
+    category: "fruits",
+    info:
+      "The handpicked mangoes. Original product's size and color may very. Price might change day by day.",
+    inCart: false,
+    inStock: true,
+    count: 0,
+    total: 0,
+  },
+  {
+    id: 103,
     title: "Apple - एप्पल",
     quantity: "1 kg",
     img: "img/fruits/apple.jpg",
@@ -308,7 +338,22 @@ const products = [
     total: 0,
   },
   {
-    id: 102,
+    id: 104,
+    title: "Mango - सुंदरी आम",
+    quantity: "1 kg",
+    img: "img/fruits/lalbagh-mango-sindhura.jpg",
+    price: 220,
+    company: "BLT STORE",
+    category: "fruits",
+    info:
+      "The handpicked mangoes. Original product's size and color may very. Price might change day by day.",
+    inCart: false,
+    inStock: true,
+    count: 0,
+    total: 0,
+  },
+  {
+    id: 105,
     title: "Banana - केला",
     quantity: "1 kg",
     img: "img/fruits/banana.jpg",
@@ -322,7 +367,7 @@ const products = [
     total: 0,
   },
   {
-    id: 103,
+    id: 106,
     title: "Coconut - नारियल",
     quantity: "1 pc",
     img: "img/fruits/coconut.jpg",
@@ -336,7 +381,7 @@ const products = [
     total: 0,
   },
   {
-    id: 104,
+    id: 107,
     title: "Grapes - अंगूर्",
     quantity: "1 Kg",
     img: "img/fruits/grapes.jpg",
@@ -351,7 +396,7 @@ const products = [
   },
 
   {
-    id: 105,
+    id: 108,
     title: "Musk-melon - खरबुजा",
     quantity: "1 Kg",
     img: "img/fruits/musk-melon.jpg",
@@ -365,7 +410,7 @@ const products = [
     total: 0,
   },
   {
-    id: 106,
+    id: 109,
     title: "Orange - संतरा",
     quantity: "1 Kg",
     img: "img/fruits/orange.jpg",
@@ -379,7 +424,7 @@ const products = [
     total: 0,
   },
   {
-    id: 107,
+    id: 110,
     title: "Papaya - पपीता",
     quantity: "1 Kg",
     img: "img/fruits/papaya.jpg",
@@ -393,7 +438,7 @@ const products = [
     total: 0,
   },
   {
-    id: 108,
+    id: 111,
     title: "Pomegranate - अनार्",
     quantity: "1 Kg",
     img: "img/fruits/pomegranate.jpg",
@@ -407,7 +452,7 @@ const products = [
     total: 0,
   },
   {
-    id: 109,
+    id: 112,
     title: "Water-melon - तरबूज",
     quantity: "1 Kg",
     img: "img/fruits/water-melon.jpg",
@@ -421,7 +466,7 @@ const products = [
     total: 0,
   },
   {
-    id: 110,
+    id: 113,
     title: "Citrus limetta - मौसमी",
     quantity: "1 Kg",
     img: "img/fruits/citrus-limetta.jpg",
