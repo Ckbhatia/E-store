@@ -20,13 +20,13 @@ export const mainProducts = [
     info: "Fresh fruits",
     category: "immunity",
   },
-  {
-    id: 4,
-    title: "immunity",
-    img: "img/mainCategory/fastfood.jpg",
-    info: "Fast Food",
-    category: "#",
-  },
+  // {
+  //   id: 4,
+  //   title: "immunity",
+  //   img: "img/mainCategory/fastfood.jpg",
+  //   info: "Fast Food",
+  //   category: "#",
+  // },
   {
     id: 5,
     title: "immunity",
