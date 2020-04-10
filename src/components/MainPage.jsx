@@ -4,7 +4,9 @@ import styled from "styled-components";
 import { mainProducts } from "../data/mainProducts";
 import { bannerData, bannerTwoData } from "../data/banner";
 import CaraouselShow from "./CarouselShow";
+import Testimonial from "./Testimonial";
 import support from "../data/support";
+import testimonial from "../data/testimonial";
 
 export default function MainPage() {
   return (
@@ -39,6 +41,23 @@ export default function MainPage() {
                 })}
             </div>
           </div>
+          <section className="testimonial-section">
+            <div className="header-container">
+              <h3 className="testimonial-heading">Recommended by</h3>
+            </div>
+            <div className="testmonial-container">
+              {testimonial.reviews.map((user) => {
+                return (
+                  <Testimonial
+                    key={user.id}
+                    title={user.title}
+                    subTitle={user.subTitle}
+                    review={user.review}
+                  />
+                );
+              })}
+            </div>
+          </section>
           <div className="main-banner">
             <CaraouselShow bannerData={bannerTwoData} />
           </div>
@@ -86,5 +105,19 @@ const Div = styled.div`
       width: 100%;
       height: 100%;
     }
+  }
+  .header-container {
+    margin: 0 1rem;
+  }
+  .testmonial-container {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: space-evenly;
+    flex-wrap: wrap;
+  }
+  .testimonial-heading {
+    font-size: 1.55rem;
   }
 `;
