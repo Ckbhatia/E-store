@@ -1,0 +1,22 @@
+{
+  "reviews": [
+    {
+      "id": 1,
+      "title": "Satish Mathur",
+      "subTitle": "Engineer at CETP Plant, Balotra",
+      "review": "Excellent service provided by you. Appreciable!"
+    },
+    {
+      "id": 2,
+      "title": "Amit Chaudhary",
+      "subTitle": "Employee at Union Bank Of India",
+      "review": "Best service by City Bazzar. I hope you grow."
+    },
+    {
+      "id": 3,
+      "title": "Pushpendra",
+      "subTitle": "The first customer",
+      "review": "You are promising and amazing service provider"
+    }
+  ]
+}
