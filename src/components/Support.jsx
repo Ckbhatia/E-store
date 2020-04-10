@@ -18,18 +18,55 @@ export default function Support() {
           <Col className="support-col mt-4 mb-4">
             <h3 className="support-sub-heading">Contact</h3>
             <p>
-              <MdCall /> {support.contact.phone}{" "}
+              <MdCall />{" "}
+              <a
+                href={`tel:${support.contact.phone}`}
+                rel="noopener noreferrer"
+                className="support-link phone-link"
+              >
+                Call
+              </a>
             </p>
             <p>
-              {support.contact.alternatePhone
-                ? `<MdCall /> ${support.contact.alternatePhone} {" "}`
-                : ""}
+              {support.contact.alternatePhone ? (
+                <p>
+                  <MdCall />
+                  <a
+                    href={`tel:${support.contact.alternatePhone}`}
+                    rel="noopener noreferrer"
+                    className="support-link whatsapp-link"
+                  >
+                    {" "}
+                    Call
+                  </a>
+                </p>
+              ) : (
+                ""
+              )}
             </p>
             <p>
-              <FaWhatsapp /> {support.contact.whatsapp}{" "}
+              <FaWhatsapp />
+              <a
+                href={`${support.contact.whatsapp}`}
+                rel="noopener noreferrer"
+                className="support-link whatsapp-link"
+                target="_blank"
+              >
+                {" "}
+                Whatsapp
+              </a>
             </p>
             <p>
-              <MdEmail /> {support.contact.email}
+              <MdEmail />
+              <a
+                href={`mailto:${support.contact.email}`}
+                rel="noopener noreferrer"
+                className="support-link email-link"
+                target="_blank"
+              >
+                {" "}
+                {support.contact.email}
+              </a>
             </p>
             <p>Please feel free to contact for feedback purpose also.</p>
           </Col>
@@ -41,33 +78,33 @@ export default function Support() {
             </h4>
             <h3 className="support-sub-heading">Payment</h3>
             <h4 className="support-sub-heading">
-              How do I pay for a BLT store purchase?
+              How do I pay for a City Bazzar purchase?
             </h4>
             <p className="support-paragraph">
-              BLT store offers you multiple payment methods. Whatever your
-              online mode of payment, you can rest assured that BLT store's
+              City Bazzar offers you multiple payment methods. Whatever your
+              online mode of payment, you can rest assured that City Bazzar's
               trusted payment gateway partners use secure encryption technology
               to keep your transaction details confidential at all times.
             </p>
             <p className="support-paragraph">
-              You may use UPI, Internet Banking, Gift Card, Pay On Delivery and
-              Cash on Delivery ( Only available during normal days) to make your
+              You may use UPI, Internet Banking, Pay On Delivery and Cash on
+              Delivery ( Only available during normal days) to make your
               purchase.
             </p>
             <h4 className="support-sub-heading">
               Are there any hidden charges (Octroi or Sales Tax) when I make a
-              purchase on BLT store?
+              purchase on City Bazzar?
             </h4>
             <p className="support-paragraph">
-              There are NO hidden charges when you make a purchase on BLT store.
-              The prices listed for all the items are final and all-inclusive.
-              The price you see on the product page is exactly what you pay. BLT
-              store might charge if your listed product price incremented
-              suddenly.
+              There are NO hidden charges when you make a purchase on City
+              Bazzar. The prices listed for all the items are final and
+              all-inclusive. The price you see on the product page is exactly
+              what you pay. City Bazzar might charge you extra if your listed
+              product price incremented suddenly.
             </p>
             <p className="support-paragraph">
               Delivery charges may be extra depending on the seller policy.
-              Please check individual seller for the same.
+              Please check contact us for clear delivery charge.
             </p>
             <h4 className="support-sub-heading">What is Pay on Delivery?</h4>
             <p className="support-paragraph">
@@ -87,7 +124,7 @@ export default function Support() {
               How will I get informed about my order?
             </h4>
             <p className="support-paragraph">
-              You will get informed via one of these option.
+              You will get informed via one of these methods.
             </p>
 
             <p className="support-paragraph">
@@ -103,7 +140,7 @@ export default function Support() {
             </p>
             <p className="support-paragraph">
               Incase if you don't get any confirmation notifcation via these
-              methods. You can contact us on given platform and methods.
+              methods. You can contact us on given platforms.
             </p>
 
             <h4 className="support-sub-heading">
@@ -111,6 +148,9 @@ export default function Support() {
             </h4>
             <p className="support-paragraph">
               As of now, we are not able to deliver outside the Balotra city.
+              Note: You can reach out to us on whatsapp or email for any kind of
+              info regarding this. We may ship your order if your location is
+              near to Balotra.
             </p>
             <h4 className="support-sub-heading">
               What are the delivery charges?
@@ -119,19 +159,7 @@ export default function Support() {
               Delivery charge varies on cart value.
             </p>
             <p className="support-paragraph">
-              You will be charged Rs 30 on cart value of Rs 0 to Rs 50.
-            </p>
-            <p className="support-paragraph">
-              You will be charged Rs 25 on cart value of Rs 51 to Rs 70.
-            </p>
-            <p className="support-paragraph">
-              You will be charged Rs 20 on cart value of Rs 71 to Rs 100.
-            </p>
-            <p className="support-paragraph">
-              You will be charged Rs 15 on cart value of Rs 101 to Rs120.
-            </p>
-            <p className="support-paragraph">
-              You will be charged Rs 10 on cart value of Rs 121 and Above.
+              You can see the delivery charge on your cart page.
             </p>
             <p className="support-paragraph">
               We might change shipping charge without any prior notice.
@@ -183,4 +211,7 @@ export default function Support() {
 
 const ContainerWrapper = styled.div`
   color: #000;
+  .support-link {
+    color: #505050;
+  }
 `;

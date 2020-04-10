@@ -10,9 +10,9 @@ export default function Product({ product }) {
     addToCart,
     incrementItem,
     decrementItem,
-    openModal
+    openModal,
   } = useContext(ProductContext);
-  const { id, title, img, price, inCart, count, quantity } = product;
+  const { id, title, img, price, inCart, count, quantity, inStock } = product;
 
   return (
     <ProductWrapper className="col-9 mx-auto col-md-6 col-lg-3 my-3">
@@ -28,10 +28,12 @@ export default function Product({ product }) {
           </div>
           <div className="container-two d-flex justify-content-between">
             <p className="algin-self-center mb0">{quantity}</p>
-            <h5 className="text-blue font-italic mb-0">
-              <span className="mr-1">₹</span>
-              {price}
-            </h5>
+            {inStock && (
+              <h5 className="text-blue font-italic mb-0">
+                <span className="mr-1">₹</span>
+                {price}
+              </h5>
+            )}
             {inCart ? (
               <div className="cart-control-btn">
                 <button
@@ -56,7 +58,7 @@ export default function Product({ product }) {
                   +
                 </button>
               </div>
-            ) : (
+            ) : inStock ? (
               <span className="cart-btn-container">
                 <button
                   onClick={() => {
@@ -68,6 +70,8 @@ export default function Product({ product }) {
                   <i className="fas fa-cart-plus" />
                 </button>
               </span>
+            ) : (
+              <span className="stock-out-text">Out of Stock</span>
             )}
           </div>
         </div>
@@ -82,8 +86,9 @@ Product.propType = {
     img: PropTypes.string,
     title: PropTypes.string,
     price: PropTypes.number,
-    inCart: PropTypes.bool
-  }).isRequired
+    inCart: PropTypes.bool,
+    inStock: PropTypes.bool,
+  }).isRequired,
 };
 
 const ProductWrapper = styled.div`
@@ -95,6 +100,7 @@ const ProductWrapper = styled.div`
 
   .card-footer {
     // min-height: 100px;
+    padding: 0.75rem;
   }
 
   .img-container {
@@ -121,7 +127,7 @@ const ProductWrapper = styled.div`
   }
 
   .to-cart-btn {
-    font-size: 1rem;
+    font-size: 0.9rem;
     color: #25a641;
     background: transparent;
     border: 1px solid #25a641;
@@ -131,18 +137,30 @@ const ProductWrapper = styled.div`
     }
   }
   .count-btn {
-    font-size: 1rem;
+    font-size: 0.9rem;
     color: #c4c4c4;
     background: transparent;
+    // border: 1px solid #c4c4c4;
     border: 1px solid #c4c4c4;
     &:hover {
       color: #6e6e6e;
     }
   }
+  .inc-btn {
+    border-right: none;
+  }
+  .dec-btn {
+    border-left: none;
+  }
+
   .img-container:hover .cart-btn {
     transform: translate(0, 0);
   }
   .cart-btn:hover {
     color: var(--LightGreen);
+  }
+  .stock-out-text {
+    color: #ff3131;
+    font-size: 1rem;
   }
 `;

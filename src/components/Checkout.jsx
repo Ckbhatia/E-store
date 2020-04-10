@@ -1,17 +1,9 @@
 import React, { useState, useEffect, useContext } from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
-import Form from "react-bootstrap/Form";
+import { Form, Spinner } from "react-bootstrap";
 import { ProductContext } from "../Context";
 import OrderModal from "./OrderModal";
-
-const encode = (data) => {
-  const formData = new FormData();
-  Object.keys(data).forEach((k) => {
-    formData.append(k, data[k]);
-  });
-  return formData;
-};
 
 export default function Checkout() {
   const [name, updateName] = useState("");
@@ -22,9 +14,11 @@ export default function Checkout() {
   const [landmark, updateLandmark] = useState("");
   const [isChecked, updateCheck] = useState(true);
   const [isTcChecked, updateTcChecked] = useState(true);
+  const [additional, updateAdditional] = useState("");
   const [orderId, updateOrderId] = useState("");
   const [modalShow, setModalShow] = useState(false);
   const [hasError, updateError] = useState(false);
+  const [isFetching, updateFetching] = useState(false);
 
   const { cart, cartSubTotal, delivery, cartTotal, clearCart } = useContext(
     ProductContext
@@ -57,7 +51,9 @@ export default function Checkout() {
       .toString(36)
       .substring(2, 15);
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async e => {
+    e.preventDefault();
+
     if (isChecked) {
       // Save user info / address to localStorage to retain
       localStorage.setItem(
@@ -67,7 +63,15 @@ export default function Checkout() {
           cartTotal: cartTotal,
           cartSubTotal: cartSubTotal,
           delivery: delivery,
-          userInfo: { name, email, number, landmark, address, alternate }
+          userInfo: {
+            name,
+            email,
+            number,
+            landmark,
+            address,
+            alternate,
+            additional
+          }
         })
       );
     }
@@ -76,31 +80,47 @@ export default function Checkout() {
       // Generate order Id
       await updateOrderId(generateId);
 
-      const res = await fetch("/", {
-        method: "POST",
-        // headers: { "Content-Type": "application/x-www-form-urlencoded" },
-        body: encode({
-          "form-name": "order",
-          orderId,
-          name,
-          number,
-          email,
-          alternate,
-          address,
-          landmark,
-          order: JSON.stringify({ cart, delivery, cartSubTotal, cartTotal })
-        })
-      });
-      if (res.status === 200) {
-        // e.preventDefault();
+      if (cart.length < 1) {
+        return cart.length;
+      }
+
+      updateFetching(true);
+
+      const { status } = await fetch(
+        "https://localstore04.herokuapp.com/api/v1/order",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify({
+            orderId: generateId,
+            name,
+            number,
+            email,
+            alternate,
+            address,
+            landmark,
+            cart,
+            delivery,
+            cartSubTotal,
+            cartTotal
+          })
+        }
+      );
+      if (status === 201) {
         await setModalShow(true);
         clearCart();
+      } else {
+        console.error("There's an error.");
       }
     } catch (error) {
       e.preventDefault();
       updateError(true);
       setTimeout(() => updateError(false), 2000);
     }
+
+    updateFetching(false);
   };
 
   return (
@@ -141,7 +161,7 @@ export default function Checkout() {
                     placeholder="Name"
                     minLength="4"
                     value={name}
-                    onChange={(e) => updateName(e.target.value)}
+                    onChange={e => updateName(e.target.value)}
                   />
                 </label>
                 <label>
@@ -154,7 +174,7 @@ export default function Checkout() {
                     placeholder="10-digit mobile number"
                     minLength="10"
                     value={number}
-                    onChange={(e) => updateNumber(e.target.value)}
+                    onChange={e => updateNumber(e.target.value)}
                   />
                 </label>
                 <label>
@@ -167,7 +187,7 @@ export default function Checkout() {
                     placeholder="Email"
                     minLength="12"
                     value={email}
-                    onChange={(e) => updateEmail(e.target.value)}
+                    onChange={e => updateEmail(e.target.value)}
                   />
                 </label>
                 <textarea
@@ -177,7 +197,7 @@ export default function Checkout() {
                   placeholder="Address ( area and street )"
                   value={address}
                   required
-                  onChange={(e) => updateAddress(e.target.value)}
+                  onChange={e => updateAddress(e.target.value)}
                 ></textarea>
                 <input
                   type="text"
@@ -185,7 +205,7 @@ export default function Checkout() {
                   className="input"
                   placeholder="Landmark ( optional )"
                   value={landmark}
-                  onChange={(e) => updateLandmark(e.target.value)}
+                  onChange={e => updateLandmark(e.target.value)}
                 />
                 <input
                   type="number"
@@ -193,21 +213,28 @@ export default function Checkout() {
                   className="input"
                   placeholder="Alternate Phone ( optional )"
                   value={alternate}
-                  onChange={(e) => updateAlternate(e.target.value)}
+                  onChange={e => updateAlternate(e.target.value)}
                 />
+                <textarea
+                  type="textarea"
+                  name="additional"
+                  className="input"
+                  placeholder="Additional note: ( Optional ) feel free to leave your additional note here.
+                  For Ex: You can be more specific about your groceries order."
+                  value={additional}
+                  onChange={e => updateAdditional(e.target.value)}
+                ></textarea>
                 <Form.Check
                   custom
                   checked={isChecked}
-                  onChange={() => updateCheck((isChecked) => !isChecked)}
+                  onChange={() => updateCheck(isChecked => !isChecked)}
                   type="checkbox"
                   label={`Save this Address`}
                 />
                 <Form.Check
                   custom
                   checked={isTcChecked}
-                  onChange={() =>
-                    updateTcChecked((isTcChecked) => !isTcChecked)
-                  }
+                  onChange={() => updateTcChecked(isTcChecked => !isTcChecked)}
                   type="checkbox"
                   label={
                     <>
@@ -215,11 +242,30 @@ export default function Checkout() {
                     </>
                   }
                 />
-                <input
-                  className="submit-btn text-uppercase"
-                  type="submit"
-                  value="Order and Deliver here"
-                />
+                {isFetching ? (
+                  <button
+                    className="submit-btn text-uppercase"
+                    type="submit"
+                    value="Order and Deliver here"
+                  >
+                    <Spinner
+                      as="span"
+                      animation="border"
+                      size="sm"
+                      role="status"
+                      aria-hidden="true"
+                    />{" "}
+                    Order and Deliver here
+                  </button>
+                ) : (
+                  <button
+                    className="submit-btn text-uppercase"
+                    type="submit"
+                    value="Order and Deliver here"
+                  >
+                    Order and Deliver here
+                  </button>
+                )}
               </form>
             </div>
           </div>
