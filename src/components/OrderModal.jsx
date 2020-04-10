@@ -43,15 +43,40 @@ export default function OrderModal(props) {
           <p>Delivery Type: Standard</p>
           <p>Estimated delivery: next day morning ( 9:00 AM to 12:00 PM)</p>
           <span>Support : </span>
-          <span>
-            <MdCall /> {support.contact.phone}{" "}
-          </span>
-          <span>
-            <FaWhatsapp /> {support.contact.whatsapp}{" "}
-          </span>
-          <span>
-            <MdEmail /> {support.contact.email}
-          </span>
+          <p>
+            <MdCall />{" "}
+            <a
+              href={`tel:${support.contact.phone}`}
+              rel="noopener noreferrer"
+              className="support-link phone-link"
+            >
+              Call
+            </a>
+          </p>
+          <p>
+            <FaWhatsapp />
+            <a
+              href={`${support.contact.whatsapp}`}
+              rel="noopener noreferrer"
+              className="support-link whatsapp-link"
+              target="_blank"
+            >
+              {" "}
+              Whatsapp
+            </a>
+          </p>
+          <p>
+            <MdEmail />
+            <a
+              href={`mailto:${support.contact.email}`}
+              rel="noopener noreferrer"
+              className="support-link email-link"
+              target="_blank"
+            >
+              {" "}
+              {support.contact.email}
+            </a>
+          </p>
         </Modal.Body>
         <Modal.Footer>
           <Link to="/">
