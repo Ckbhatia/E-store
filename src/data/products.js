@@ -11,7 +11,7 @@ const products = [
     inCart: false,
     inStock: true,
     count: 0,
-    total: 0,
+    total: 0
   },
   {
     id: 2,
@@ -25,7 +25,7 @@ const products = [
     inCart: false,
     inStock: true,
     count: 0,
-    total: 0,
+    total: 0
   },
   {
     id: 3,
@@ -39,21 +39,21 @@ const products = [
     inCart: false,
     inStock: false,
     count: 0,
-    total: 0,
+    total: 0
   },
   {
     id: 4,
     title: "Onion - प्याज",
     quantity: "500 g",
     img: "img/vegetables/onion.jpg",
-    price: 13,
+    price: 12,
     company: "BLT STORE",
     category: "vegetables",
     iinfo: "The fresh handpicked onions, price might change day by day.",
     inCart: false,
     inStock: true,
     count: 0,
-    total: 0,
+    total: 0
   },
   {
     id: 5,
@@ -67,21 +67,21 @@ const products = [
     inCart: false,
     inStock: true,
     count: 0,
-    total: 0,
+    total: 0
   },
   {
     id: 6,
     title: "Spinach - पालक",
     quantity: "500 g",
     img: "img/vegetables/spinach.jpg",
-    price: 15,
+    price: 17,
     company: "BLT STORE",
     category: "vegetables",
     info: "The handpicked spinach, price might change day by day.",
     inCart: false,
     inStock: true,
     count: 0,
-    total: 0,
+    total: 0
   },
   {
     id: 7,
@@ -95,7 +95,7 @@ const products = [
     inCart: false,
     inStock: false,
     count: 0,
-    total: 0,
+    total: 0
   },
   {
     id: 8,
@@ -109,7 +109,7 @@ const products = [
     inCart: false,
     inStock: true,
     count: 0,
-    total: 0,
+    total: 0
   },
   {
     id: 9,
@@ -123,7 +123,7 @@ const products = [
     inCart: false,
     inStock: true,
     count: 0,
-    total: 0,
+    total: 0
   },
   {
     id: 10,
@@ -137,7 +137,7 @@ const products = [
     inCart: false,
     inStock: false,
     count: 0,
-    total: 0,
+    total: 0
   },
   {
     id: 11,
@@ -151,7 +151,7 @@ const products = [
     inCart: false,
     inStock: true,
     count: 0,
-    total: 0,
+    total: 0
   },
   {
     id: 12,
@@ -165,7 +165,7 @@ const products = [
     inCart: false,
     inStock: false,
     count: 0,
-    total: 0,
+    total: 0
   },
   {
     id: 13,
@@ -179,7 +179,7 @@ const products = [
     inCart: false,
     inStock: true,
     count: 0,
-    total: 0,
+    total: 0
   },
   {
     id: 14,
@@ -193,7 +193,7 @@ const products = [
     inCart: false,
     inStock: true,
     count: 0,
-    total: 0,
+    total: 0
   },
   {
     id: 15,
@@ -207,7 +207,7 @@ const products = [
     inCart: false,
     inStock: true,
     count: 0,
-    total: 0,
+    total: 0
   },
   {
     id: 16,
@@ -221,7 +221,7 @@ const products = [
     inCart: false,
     inStock: true,
     count: 0,
-    total: 0,
+    total: 0
   },
   {
     id: 17,
@@ -235,7 +235,7 @@ const products = [
     inCart: false,
     inStock: true,
     count: 0,
-    total: 0,
+    total: 0
   },
   {
     id: 18,
@@ -249,7 +249,7 @@ const products = [
     inCart: false,
     inStock: true,
     count: 0,
-    total: 0,
+    total: 0
   },
   {
     id: 19,
@@ -263,7 +263,7 @@ const products = [
     inCart: false,
     inStock: true,
     count: 0,
-    total: 0,
+    total: 0
   },
   {
     id: 20,
@@ -277,7 +277,7 @@ const products = [
     inCart: false,
     inStock: true,
     count: 0,
-    total: 0,
+    total: 0
   },
   {
     id: 21,
@@ -291,7 +291,35 @@ const products = [
     inCart: false,
     inStock: true,
     count: 0,
-    total: 0,
+    total: 0
+  },
+  {
+    id: 105,
+    title: "Banana - केला",
+    quantity: "1 kg",
+    img: "img/fruits/banana.jpg",
+    price: 23,
+    company: "BLT STORE",
+    category: "fruits",
+    info: "The handpicked bananas, price might change day by day",
+    inCart: false,
+    inStock: true,
+    count: 0,
+    total: 0
+  },
+  {
+    id: 107,
+    title: "Grapes - अंगूर्",
+    quantity: "1 Kg",
+    img: "img/fruits/grapes.jpg",
+    price: 43,
+    company: "BLT STORE",
+    category: "fruits",
+    info: "The handpicked grapes, price might change day by day",
+    inCart: false,
+    inStock: true,
+    count: 0,
+    total: 0
   },
   {
     id: 101,
@@ -306,7 +334,124 @@ const products = [
     inCart: false,
     inStock: true,
     count: 0,
-    total: 0,
+    total: 0
+  },
+
+  {
+    id: 108,
+    title: "Musk-melon - खरबुजा",
+    quantity: "1 Kg",
+    img: "img/fruits/musk-melon.jpg",
+    price: 23,
+    company: "BLT STORE",
+    category: "fruits",
+    info: "The handpicked musk-melons, price might change day by day",
+    inCart: false,
+    inStock: true,
+    count: 0,
+    total: 0
+  },
+
+  {
+    id: 103,
+    title: "Apple - एप्पल",
+    quantity: "1 kg",
+    img: "img/fruits/apple.jpg",
+    price: 170,
+    company: "BLT STORE",
+    category: "fruits",
+    info: "The handpicked Apple, price might change day by day.",
+    inCart: false,
+    inStock: true,
+    count: 0,
+    total: 0
+  },
+  {
+    id: 112,
+    title: "Water-melon - तरबूज",
+    quantity: "1 Kg",
+    img: "img/fruits/water-melon.jpg",
+    price: 24,
+    company: "BLT STORE",
+    category: "fruits",
+    info: "The handpicked water-melons , price might change day by day",
+    inCart: false,
+    inStock: true,
+    count: 0,
+    total: 0
+  },
+
+  {
+    id: 104,
+    title: "Mango - सुंदरी आम",
+    quantity: "1 kg",
+    img: "img/fruits/lalbagh-mango-sindhura.jpg",
+    price: 220,
+    company: "BLT STORE",
+    category: "fruits",
+    info:
+      "The handpicked mangoes. Original product's size and color may very. Price might change day by day.",
+    inCart: false,
+    inStock: true,
+    count: 0,
+    total: 0
+  },
+  {
+    id: 106,
+    title: "Coconut - नारियल",
+    quantity: "1 pc",
+    img: "img/fruits/coconut.jpg",
+    price: 40,
+    company: "BLT STORE",
+    category: "fruits",
+    info: "The handpicked coconuts, price might change day by day",
+    inCart: false,
+    inStock: true,
+    count: 0,
+    total: 0
+  },
+
+  {
+    id: 109,
+    title: "Orange - संतरा",
+    quantity: "1 Kg",
+    img: "img/fruits/orange.jpg",
+    price: 52,
+    company: "BLT STORE",
+    category: "fruits",
+    info: "The handpicked oranges, price might change day by day",
+    inCart: false,
+    inStock: true,
+    count: 0,
+    total: 0
+  },
+  {
+    id: 110,
+    title: "Papaya - पपीता",
+    quantity: "1 Kg",
+    img: "img/fruits/papaya.jpg",
+    price: 33,
+    company: "BLT STORE",
+    category: "fruits",
+    info: "The handpicked papayas, price might change day by day",
+    inCart: false,
+    inStock: true,
+    count: 0,
+    total: 0
+  },
+  {
+    id: 111,
+    title: "Pomegranate - अनार्",
+    quantity: "1 Kg",
+    img: "img/fruits/pomegranate.jpg",
+    price: 0,
+    company: "BLT STORE",
+    category: "fruits",
+    info: "The handpicked pomegranates, price might change day by day",
+    inCart: false,
+    inStock: false,
+    count: 0,
+    total: 0
   },
   {
     id: 102,
@@ -321,150 +466,9 @@ const products = [
     inCart: false,
     inStock: true,
     count: 0,
-    total: 0,
-  },
-  {
-    id: 103,
-    title: "Apple - एप्पल",
-    quantity: "1 kg",
-    img: "img/fruits/apple.jpg",
-    price: 200,
-    company: "BLT STORE",
-    category: "fruits",
-    info: "The handpicked Apple, price might change day by day.",
-    inCart: false,
-    inStock: true,
-    count: 0,
-    total: 0,
-  },
-  {
-    id: 104,
-    title: "Mango - सुंदरी आम",
-    quantity: "1 kg",
-    img: "img/fruits/lalbagh-mango-sindhura.jpg",
-    price: 220,
-    company: "BLT STORE",
-    category: "fruits",
-    info:
-      "The handpicked mangoes. Original product's size and color may very. Price might change day by day.",
-    inCart: false,
-    inStock: true,
-    count: 0,
-    total: 0,
-  },
-  {
-    id: 105,
-    title: "Banana - केला",
-    quantity: "1 kg",
-    img: "img/fruits/banana.jpg",
-    price: 24,
-    company: "BLT STORE",
-    category: "fruits",
-    info: "The handpicked bananas, price might change day by day",
-    inCart: false,
-    inStock: true,
-    count: 0,
-    total: 0,
-  },
-  {
-    id: 106,
-    title: "Coconut - नारियल",
-    quantity: "1 pc",
-    img: "img/fruits/coconut.jpg",
-    price: 40,
-    company: "BLT STORE",
-    category: "fruits",
-    info: "The handpicked coconuts, price might change day by day",
-    inCart: false,
-    inStock: true,
-    count: 0,
-    total: 0,
-  },
-  {
-    id: 107,
-    title: "Grapes - अंगूर्",
-    quantity: "1 Kg",
-    img: "img/fruits/grapes.jpg",
-    price: 44,
-    company: "BLT STORE",
-    category: "fruits",
-    info: "The handpicked grapes, price might change day by day",
-    inCart: false,
-    inStock: true,
-    count: 0,
-    total: 0,
+    total: 0
   },
 
-  {
-    id: 108,
-    title: "Musk-melon - खरबुजा",
-    quantity: "1 Kg",
-    img: "img/fruits/musk-melon.jpg",
-    price: 36,
-    company: "BLT STORE",
-    category: "fruits",
-    info: "The handpicked musk-melons, price might change day by day",
-    inCart: false,
-    inStock: true,
-    count: 0,
-    total: 0,
-  },
-  {
-    id: 109,
-    title: "Orange - संतरा",
-    quantity: "1 Kg",
-    img: "img/fruits/orange.jpg",
-    price: 56,
-    company: "BLT STORE",
-    category: "fruits",
-    info: "The handpicked oranges, price might change day by day",
-    inCart: false,
-    inStock: true,
-    count: 0,
-    total: 0,
-  },
-  {
-    id: 110,
-    title: "Papaya - पपीता",
-    quantity: "1 Kg",
-    img: "img/fruits/papaya.jpg",
-    price: 33,
-    company: "BLT STORE",
-    category: "fruits",
-    info: "The handpicked papayas, price might change day by day",
-    inCart: false,
-    inStock: true,
-    count: 0,
-    total: 0,
-  },
-  {
-    id: 111,
-    title: "Pomegranate - अनार्",
-    quantity: "1 Kg",
-    img: "img/fruits/pomegranate.jpg",
-    price: 0,
-    company: "BLT STORE",
-    category: "fruits",
-    info: "The handpicked pomegranates, price might change day by day",
-    inCart: false,
-    inStock: false,
-    count: 0,
-    total: 0,
-  },
-  {
-    id: 112,
-    title: "Water-melon - तरबूज",
-    quantity: "1 Kg",
-    img: "img/fruits/water-melon.jpg",
-    price: 34,
-    company: "BLT STORE",
-    category: "fruits",
-    info: "The handpicked water-melons , price might change day by day",
-    inCart: false,
-    inStock: true,
-    count: 0,
-    total: 0,
-  },
   {
     id: 113,
     title: "Citrus limetta - मौसमी",
@@ -477,21 +481,21 @@ const products = [
     inCart: false,
     inStock: true,
     count: 0,
-    total: 0,
+    total: 0
   },
   {
     id: 1090,
     title: "Water-melon - तरबूज",
     quantity: "1 kg",
     img: "img/fruits/water-melon.jpg",
-    price: 34,
+    price: 24,
     company: "BLT STORE",
     category: "immunity",
     info: "The handpicked water-melons, price might change day by day",
     inCart: false,
     inStock: true,
     count: 0,
-    total: 0,
+    total: 0
   },
   {
     id: 2010,
@@ -505,7 +509,7 @@ const products = [
     inCart: false,
     inStock: false,
     count: 0,
-    total: 0,
+    total: 0
   },
   {
     id: 1070,
@@ -519,7 +523,7 @@ const products = [
     inCart: false,
     inStock: true,
     count: 0,
-    total: 0,
+    total: 0
   },
   {
     id: 60,
@@ -533,7 +537,7 @@ const products = [
     inCart: false,
     inStock: true,
     count: 0,
-    total: 0,
+    total: 0
   },
   {
     id: 70,
@@ -547,7 +551,7 @@ const products = [
     inCart: false,
     inStock: false,
     count: 0,
-    total: 0,
+    total: 0
   },
   {
     id: 1060,
@@ -561,8 +565,8 @@ const products = [
     inCart: false,
     inStock: true,
     count: 0,
-    total: 0,
-  },
+    total: 0
+  }
 ];
 
 export default products;
