@@ -4,21 +4,21 @@ export const mainProducts = [
     title: "vegetables",
     img: "img/mainCategory/vege.jpg",
     info: "Fresh vegetables",
-    category: "vegetables",
+    category: "vegetables"
   },
   {
     id: 2,
     title: "fruits",
     img: "img/mainCategory/fruits.jpg",
     info: "Fresh fruits",
-    category: "fruits",
+    category: "fruits"
   },
   {
     id: 3,
     title: "immunity",
     img: "img/mainCategory/immunity.jpg",
     info: "Fresh fruits",
-    category: "immunity",
+    category: "immunity"
   },
   // {
   //   id: 4,
@@ -29,9 +29,9 @@ export const mainProducts = [
   // },
   {
     id: 5,
-    title: "immunity",
+    title: "Grocery items",
     img: "img/mainCategory/groceries.jpg",
     info: "Fresh groceries",
-    category: "#",
-  },
+    category: "groceries"
+  }
 ];
