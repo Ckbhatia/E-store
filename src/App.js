@@ -12,6 +12,7 @@ import Modal from "./components/Modal";
 import MainPage from "./components/MainPage";
 import Checkout from "./components/Checkout";
 import Support from "./components/Support";
+import GroceryCheckout from "./components/GroceryCheckout";
 
 class App extends Component {
   render() {
@@ -23,6 +24,7 @@ class App extends Component {
           <Route path="/vegetables" component={ProductList} />
           <Route path="/fruits" component={ProductList} />
           <Route path="/immunity" component={ProductList} />
+          <Route path="/groceries" component={GroceryCheckout} />
           <Route path="/details" component={Details} />
           <Route path="/cart" component={Cart} />
           <Route path="/checkout" component={Checkout} />
