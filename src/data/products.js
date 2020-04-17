@@ -11,7 +11,7 @@ const products = [
     inCart: false,
     inStock: true,
     count: 0,
-    total: 0
+    total: 0,
   },
   {
     id: 2,
@@ -25,7 +25,7 @@ const products = [
     inCart: false,
     inStock: true,
     count: 0,
-    total: 0
+    total: 0,
   },
   {
     id: 3,
@@ -39,7 +39,7 @@ const products = [
     inCart: false,
     inStock: false,
     count: 0,
-    total: 0
+    total: 0,
   },
   {
     id: 4,
@@ -53,7 +53,7 @@ const products = [
     inCart: false,
     inStock: true,
     count: 0,
-    total: 0
+    total: 0,
   },
   {
     id: 5,
@@ -67,7 +67,7 @@ const products = [
     inCart: false,
     inStock: true,
     count: 0,
-    total: 0
+    total: 0,
   },
   {
     id: 6,
@@ -81,7 +81,7 @@ const products = [
     inCart: false,
     inStock: true,
     count: 0,
-    total: 0
+    total: 0,
   },
   {
     id: 7,
@@ -95,7 +95,7 @@ const products = [
     inCart: false,
     inStock: false,
     count: 0,
-    total: 0
+    total: 0,
   },
   {
     id: 8,
@@ -109,7 +109,7 @@ const products = [
     inCart: false,
     inStock: true,
     count: 0,
-    total: 0
+    total: 0,
   },
   {
     id: 9,
@@ -123,7 +123,7 @@ const products = [
     inCart: false,
     inStock: true,
     count: 0,
-    total: 0
+    total: 0,
   },
   {
     id: 10,
@@ -137,7 +137,7 @@ const products = [
     inCart: false,
     inStock: false,
     count: 0,
-    total: 0
+    total: 0,
   },
   {
     id: 11,
@@ -151,7 +151,7 @@ const products = [
     inCart: false,
     inStock: true,
     count: 0,
-    total: 0
+    total: 0,
   },
   {
     id: 12,
@@ -165,7 +165,7 @@ const products = [
     inCart: false,
     inStock: false,
     count: 0,
-    total: 0
+    total: 0,
   },
   {
     id: 13,
@@ -179,7 +179,7 @@ const products = [
     inCart: false,
     inStock: true,
     count: 0,
-    total: 0
+    total: 0,
   },
   {
     id: 14,
@@ -193,7 +193,7 @@ const products = [
     inCart: false,
     inStock: true,
     count: 0,
-    total: 0
+    total: 0,
   },
   {
     id: 15,
@@ -207,7 +207,7 @@ const products = [
     inCart: false,
     inStock: true,
     count: 0,
-    total: 0
+    total: 0,
   },
   {
     id: 16,
@@ -221,7 +221,7 @@ const products = [
     inCart: false,
     inStock: true,
     count: 0,
-    total: 0
+    total: 0,
   },
   {
     id: 17,
@@ -235,7 +235,7 @@ const products = [
     inCart: false,
     inStock: true,
     count: 0,
-    total: 0
+    total: 0,
   },
   {
     id: 18,
@@ -249,7 +249,7 @@ const products = [
     inCart: false,
     inStock: true,
     count: 0,
-    total: 0
+    total: 0,
   },
   {
     id: 19,
@@ -263,7 +263,7 @@ const products = [
     inCart: false,
     inStock: true,
     count: 0,
-    total: 0
+    total: 0,
   },
   {
     id: 20,
@@ -277,7 +277,7 @@ const products = [
     inCart: false,
     inStock: true,
     count: 0,
-    total: 0
+    total: 0,
   },
   {
     id: 21,
@@ -291,7 +291,7 @@ const products = [
     inCart: false,
     inStock: true,
     count: 0,
-    total: 0
+    total: 0,
   },
   {
     id: 105,
@@ -305,7 +305,7 @@ const products = [
     inCart: false,
     inStock: true,
     count: 0,
-    total: 0
+    total: 0,
   },
   {
     id: 107,
@@ -319,7 +319,7 @@ const products = [
     inCart: false,
     inStock: true,
     count: 0,
-    total: 0
+    total: 0,
   },
   {
     id: 101,
@@ -334,7 +334,7 @@ const products = [
     inCart: false,
     inStock: true,
     count: 0,
-    total: 0
+    total: 0,
   },
 
   {
@@ -349,7 +349,7 @@ const products = [
     inCart: false,
     inStock: true,
     count: 0,
-    total: 0
+    total: 0,
   },
 
   {
@@ -357,14 +357,14 @@ const products = [
     title: "Apple - एप्पल",
     quantity: "1 kg",
     img: "img/fruits/apple.jpg",
-    price: 170,
+    price: 186,
     company: "BLT STORE",
     category: "fruits",
     info: "The handpicked Apple, price might change day by day.",
     inCart: false,
     inStock: true,
     count: 0,
-    total: 0
+    total: 0,
   },
   {
     id: 112,
@@ -378,7 +378,7 @@ const products = [
     inCart: false,
     inStock: true,
     count: 0,
-    total: 0
+    total: 0,
   },
 
   {
@@ -394,7 +394,7 @@ const products = [
     inCart: false,
     inStock: true,
     count: 0,
-    total: 0
+    total: 0,
   },
   {
     id: 106,
@@ -408,7 +408,7 @@ const products = [
     inCart: false,
     inStock: true,
     count: 0,
-    total: 0
+    total: 0,
   },
 
   {
@@ -416,14 +416,14 @@ const products = [
     title: "Orange - संतरा",
     quantity: "1 Kg",
     img: "img/fruits/orange.jpg",
-    price: 52,
+    price: 48,
     company: "BLT STORE",
     category: "fruits",
     info: "The handpicked oranges, price might change day by day",
     inCart: false,
     inStock: true,
     count: 0,
-    total: 0
+    total: 0,
   },
   {
     id: 110,
@@ -437,7 +437,7 @@ const products = [
     inCart: false,
     inStock: true,
     count: 0,
-    total: 0
+    total: 0,
   },
   {
     id: 111,
@@ -451,7 +451,7 @@ const products = [
     inCart: false,
     inStock: false,
     count: 0,
-    total: 0
+    total: 0,
   },
   {
     id: 102,
@@ -466,7 +466,7 @@ const products = [
     inCart: false,
     inStock: true,
     count: 0,
-    total: 0
+    total: 0,
   },
 
   {
@@ -481,7 +481,7 @@ const products = [
     inCart: false,
     inStock: true,
     count: 0,
-    total: 0
+    total: 0,
   },
   {
     id: 1090,
@@ -495,7 +495,7 @@ const products = [
     inCart: false,
     inStock: true,
     count: 0,
-    total: 0
+    total: 0,
   },
   {
     id: 2010,
@@ -509,7 +509,7 @@ const products = [
     inCart: false,
     inStock: false,
     count: 0,
-    total: 0
+    total: 0,
   },
   {
     id: 1070,
@@ -523,7 +523,7 @@ const products = [
     inCart: false,
     inStock: true,
     count: 0,
-    total: 0
+    total: 0,
   },
   {
     id: 60,
@@ -537,7 +537,7 @@ const products = [
     inCart: false,
     inStock: true,
     count: 0,
-    total: 0
+    total: 0,
   },
   {
     id: 70,
@@ -551,22 +551,22 @@ const products = [
     inCart: false,
     inStock: false,
     count: 0,
-    total: 0
+    total: 0,
   },
   {
     id: 1060,
     title: "Orange - संतरा",
     quantity: "1 Kg",
     img: "img/fruits/orange.jpg",
-    price: 50,
+    price: 48,
     company: "BLT STORE",
     category: "immunity",
     info: "The handpicked oranges, price might change day by day",
     inCart: false,
     inStock: true,
     count: 0,
-    total: 0
-  }
+    total: 0,
+  },
 ];
 
 export default products;
