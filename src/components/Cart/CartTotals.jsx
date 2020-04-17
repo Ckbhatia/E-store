@@ -39,9 +39,15 @@ export default function CartTotals({ value, history }) {
             /> */}
             <ButtonWrapper className="checkout-btn-container mt-3">
               <Link className="checkout-link" to="/checkout">
-                <button className="checkout-btn">
-                  Proceed to checkout / आगे बढ़ें
-                </button>
+                {cartTotal >= 150 ? (
+                  <button className="checkout-btn">
+                    Proceed to checkout / आगे बढ़ें
+                  </button>
+                ) : (
+                  <button className="checkout-btn btn-disabled" disabled>
+                    Proceed to checkout / आगे बढ़ें
+                  </button>
+                )}
               </Link>
             </ButtonWrapper>
           </div>
@@ -62,5 +68,9 @@ const ButtonWrapper = styled.div`
     &:hover {
       background-color: #2cc64e;
     }
+  }
+
+  .btn-disabled {
+    cursor: not-allowed;
   }
 `;
