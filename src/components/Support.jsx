@@ -104,7 +104,35 @@ export default function Support() {
             </p>
             <p className="support-paragraph">
               Delivery charges may be extra depending on the seller policy.
-              Please check contact us for clear delivery charge.
+              Please check or contact us for clear delivery charge.
+            </p>
+            <h4 className="support-sub-heading">
+              What is the Delivery charge structure?
+            </h4>
+            <p className="support-paragraph">
+              The minimum order value must be Rs 150 for vegetables and grocery
+              order on citybazzar.com So, there's no delivery charge on cart
+              value above Rs 149 in Balota City.
+            </p>
+            <p className="support-paragraph">
+              The minimum order value must be Rs 250 for grocery order on
+              citybazzar.com and there's no delivery charge within Balotra City.
+            </p>
+            <p className="support-paragraph">
+              The delivery charge pricing for orders outside Balotra city or
+              nearby areas.
+            </p>
+            <p className="support-paragraph">
+              You have to pay extra delivery charge in these areas: Himmada: Rs
+              100, Jasol: Rs 80, Nakoda: Rs 130, Housing Board: Rs 80, Pachpadra
+              Rural: Rs 120, Pachpadra Refinery area: Rs 150.
+            </p>
+            <p className="support-paragraph">
+              Note: Above charges will apply on orders from outside Balotra
+              city.
+            </p>
+            <p className="support-paragraph">
+              Cash might be accepted in case there's no other option available.
             </p>
             <h4 className="support-sub-heading">What is Pay on Delivery?</h4>
             <p className="support-paragraph">
@@ -141,16 +169,6 @@ export default function Support() {
             <p className="support-paragraph">
               Incase if you don't get any confirmation notifcation via these
               methods. You can contact us on given platforms.
-            </p>
-
-            <h4 className="support-sub-heading">
-              Why don't you ship outside Balotra city?
-            </h4>
-            <p className="support-paragraph">
-              As of now, we are not able to deliver outside the Balotra city.
-              Note: You can reach out to us on whatsapp or email for any kind of
-              info regarding this. We may ship your order if your location is
-              near to Balotra.
             </p>
             <h4 className="support-sub-heading">
               What are the delivery charges?
