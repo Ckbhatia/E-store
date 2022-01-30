@@ -1,9 +1,12 @@
-## E-store web app
+## City Bazzar web app
 
 ### Introduction
-This is an e-commerce web app, app allows the user to buy the product from this platform.
+This is an City Bazzar web app, app allows the user to buy the product online with easy to use UI.
 
-Note: please note don't make payment for any product. Product will not delivered and payment will not reverted back.
+&nbsp;
+
+BE repo: https://github.com/Ckbhatia/localstore
+
 
 ## Snapshots
 Main page:
@@ -18,20 +21,14 @@ Cart:
 
 <img src='https://i.imgur.com/UYypK3L.png' alt="cart page" width="460" />
 
+Note: above images are snapshots of old version.
+
 ### How to run this app
-You can run this app by visit: https://e-store.netlify.com/
+You can run this app by visiting: https://citybazzar.netlify.com
 
 If you want to run offline then follow these steps:
 1. Clone the app to your local machine.
 2. Open your cmd or git cli.
-3. Run the command 'install yarn'.
-4. After yarn get installed. Run 'yarn start'.
-5. You can visit given localhost address in your browser.
-
-Note: this app is being improved and extra functionality being added.
-Take the experience by visiting it time by time.
-
-App is in development to leverage the knowledge of different technologies, functionality and
-Hands on experience.
-
-### Somewhat copyright
+3. Run the command `yarn i` or `yarn install`.
+4. After `node_modules` get installed. Run `yarn start`.
+5. You can visit given `localhost:3000` or alternate given address in your browser.
