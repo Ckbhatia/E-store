@@ -1,4 +1,4 @@
-import React, { Component, useContext } from "react";
+import React, { useContext } from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 import { ProductContext } from "../Context";
@@ -8,57 +8,49 @@ export default function Product({ product }) {
   const {
     handleDetail,
     addToCart,
-    incrementItem,
-    decrementItem,
-    openModal,
+    isInCart,
+    removeItem
   } = useContext(ProductContext);
-  const { id, title, img, price, inCart, count, quantity, inStock } = product;
+  const { id, name, image, price, inCart, category, quantity } = product;
 
   return (
     <ProductWrapper className="col-9 mx-auto col-md-6 col-lg-3 my-3">
       <div className="card">
         <div className="img-container p-5" onClick={() => handleDetail(id)}>
-          <Link to="/details">
-            <img src={img} alt="product" className="card-img-top" />
+          <Link to={`/details/${id}/${category}`}>
+            <img src={image} alt={name} className="card-img-top" />
           </Link>
         </div>
         <div className="card-footer">
           <div className="container-one mr-2">
-            <p className="algin-self-center mb0">{title}</p>
+            <p className="algin-self-center mb0">{name}</p>
           </div>
           <div className="container-two d-flex justify-content-between">
-            <p className="algin-self-center mb0">{quantity}</p>
-            {inStock && (
+            <p className="algin-self-center mb0">Q: {quantity}</p>
+            {true && (
               <h5 className="text-blue font-italic mb-0">
                 <span className="mr-1">₹</span>
                 {price}
               </h5>
             )}
-            {inCart ? (
+            {inCart || isInCart(id) ? (
               <div className="cart-control-btn">
                 <button
-                  className="count-btn inc-btn"
-                  onClick={() => decrementItem(id)}
-                  title="Decrement"
+                  className="count-btn"
+                  onClick={() => removeItem(id)}
+                  title="remove"
                 >
-                  -
+                  <span className="fas fa-trash" />
                 </button>
                 <Link
                   to="cart"
                   className="text-capitalize mb-0"
                   title="Go to cart"
                 >
-                  <button className="to-cart-btn">{count} In Cart</button>
+                  <button className="to-cart-btn">In Cart</button>
                 </Link>
-                <button
-                  className="count-btn dec-btn"
-                  onClick={() => incrementItem(id)}
-                  title="Increment"
-                >
-                  +
-                </button>
               </div>
-            ) : inStock ? (
+            ) : quantity ? (
               <span className="cart-btn-container">
                 <button
                   onClick={() => {
