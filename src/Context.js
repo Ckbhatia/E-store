@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import { detailProduct } from "./data";
 import products from "./data/products";
-import { mainProducts } from "./data/mainProducts";
 
 export const ProductContext = React.createContext();
 
@@ -9,7 +8,7 @@ export const ProductContext = React.createContext();
 export class ProductProvider extends Component {
   state = {
     products: [],
-    detailProduct: detailProduct,
+    detailProduct: null,
     cart: [],
     modalOpen: false,
     modalProduct: detailProduct,
@@ -43,6 +42,11 @@ export class ProductProvider extends Component {
       );
     }
     this.setProducts();
+  }
+
+  static getDerivedStateFromProps(props, state) {
+    // TODO: This method is deprecated and should be replace and also replace all these workarounds
+    return {...state, products: props.products};
   }
 
   setProducts = () => {
@@ -105,6 +109,12 @@ export class ProductProvider extends Component {
     });
   };
 
+  addProductDetail = (product) => {
+    this.setState(() => {
+      return {...this.state, detailProduct: product };
+    });
+  }
+
   addToCart = (id) => {
     let tempProducts = [...this.state.products];
     const index = tempProducts.indexOf(this.getItem(id));
@@ -130,6 +140,10 @@ export class ProductProvider extends Component {
       )
     );
   };
+
+  isInCart = (id) => {
+    return this.state.cart.find((item) => item.id === id); 
+  }
 
   openModal = (id) => {
     const product = this.getItem(id);
@@ -305,7 +319,9 @@ export class ProductProvider extends Component {
         value={{
           ...this.state,
           handleDetail: this.handleDetail,
+          addProductDetail: this.addProductDetail,
           addToCart: this.addToCart,
+          isInCart: this.isInCart,
           openModal: this.openModal,
           closeModal: this.closeModal,
           incrementItem: this.incrementItem,

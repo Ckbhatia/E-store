@@ -1,17 +1,17 @@
 import React from 'react';
 
 export default function CartItem({item, value}) {
-    const {id, title, img, price, total, count} = item;
+    const {id, name, image, price, total, count} = item;
     const { incrementItem, decrementItem, removeItem } = value; 
 
     return ( 
         <div className="row my-2 text-capitalize text-center">
             <div className="col-10 mx-auto col-lg-2">
-                <img className="img-fluid" src={img} alt="product" style={{width:"5rem",height:"5rem"}} />
+                <img className="img-fluid" src={image} alt="product" style={{width:"5rem",height:"5rem"}} />
             </div>
             <div className="col-10 mx-auto col-lg-2">
                 <span className="d-lg-none">product : </span>
-                {title}
+                {name}
             </div>
             <div className="col-10 mx-auto col-lg-2">
                 <span className="d-lg-none">price : </span>
