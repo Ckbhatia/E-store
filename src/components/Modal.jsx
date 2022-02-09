@@ -13,7 +13,7 @@ export default class Modal extends Component {
                 // Render it on condition
                  */}
                 {(value)=> {
-                const {modalOpen, closeModal} = value;
+                const {modalOpen} = value;
                 const { img, title, price} = value.modalProduct;
                 if(!modalOpen) {
                     return null;
