@@ -1,7 +1,7 @@
 ## City Bazzar web app
 
 ### Introduction
-This is an City Bazzar web app, app allows the user to buy the product online with easy to use UI.
+This is a City Bazzar web app, allows users to buy required products online with ease of use.
 
 &nbsp;
 
