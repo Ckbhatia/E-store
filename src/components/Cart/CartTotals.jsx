@@ -6,6 +6,9 @@ import styled from "styled-components";
 export default function CartTotals({ value, history }) {
   const { cartSubTotal, delivery, cartTotal, clearCart } = value;
 
+  // Minimum purchase value should Rs 150
+  const minimumPurchase = 150;
+
   return (
     <React.Fragment>
       <div className="container">
@@ -20,6 +23,10 @@ export default function CartTotals({ value, history }) {
               clear cart
             </button>
             {/* </Link> */}
+            <h5>
+              <span className="text-title">Minimum purchase :</span>
+              <strong>₹ {minimumPurchase}</strong>
+            </h5>
             <h5>
               <span className="text-title">subtotal :</span>
               <strong>₹ {cartSubTotal}</strong>
@@ -39,7 +46,7 @@ export default function CartTotals({ value, history }) {
             /> */}
             <ButtonWrapper className="checkout-btn-container mt-3">
               <Link className="checkout-link" to="/checkout">
-                {cartTotal >= 150 ? (
+                {cartTotal >= minimumPurchase ? (
                   <button className="checkout-btn">
                     Proceed to checkout / आगे बढ़ें
                   </button>
