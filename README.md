@@ -1,37 +1,34 @@
-## E-store web app
+## City Bazzar web app
 
 ### Introduction
-This is an e-commerce web app, app allows the user to buy the product from this platform.
+This is a City Bazzar web app, allows users to buy required products online with ease of use.
 
-Note: please note don't make payment for any product. Product will not delivered and payment will not reverted back.
+&nbsp;
+
+BE repo: https://github.com/Ckbhatia/localstore
+
 
 ## Snapshots
-Main page:
 
-<img src="https://i.imgur.com/nrNOj89.png" alt="main page" width="460" />
+<img width="640" alt="main page" src="https://user-images.githubusercontent.com/37036881/153335018-7ab74cd5-b103-45df-8570-66c0bd948329.png">
+<img width="640" alt="product categories" src="https://user-images.githubusercontent.com/37036881/153335193-bf27351e-1c6f-4f56-a2a4-cf7a7d6b4511.png">
 
-Product to cart:
+<img width="640" alt="products" src="https://user-images.githubusercontent.com/37036881/153335490-c2330112-16f0-4af2-9692-2038ec501652.png">
 
-<img src='https://i.imgur.com/gssRHIp.png' alt="add product to page" width="460" />
+<img width="640" alt="cart" src="https://user-images.githubusercontent.com/37036881/153335566-25f244c1-eaff-4ba5-95df-9a954f7eab26.png">
 
-Cart:
+<img width="640" alt="checkout" src="https://user-images.githubusercontent.com/37036881/153335621-8fdd28bb-7c52-491b-86eb-ea0099dfc4f4.png">
 
-<img src='https://i.imgur.com/UYypK3L.png' alt="cart page" width="460" />
+<img width="640" alt="support" src="https://user-images.githubusercontent.com/37036881/153335821-3a9ddc0f-5cff-4006-a262-78973b34e506.png">
+
+<img width="640" alt="grocery order" src="https://user-images.githubusercontent.com/37036881/153336086-6782e75d-36ef-440d-8413-43f1eff5a70b.png">
+
 
 ### How to run this app
-You can run this app by visit: https://e-store.netlify.com/
+You can run this app by visiting: https://citybazzar.netlify.com
 
-If you want to run offline then follow these steps:
-1. Clone the app to your local machine.
-2. Open your cmd or git cli.
-3. Run the command 'install yarn'.
-4. After yarn get installed. Run 'yarn start'.
-5. You can visit given localhost address in your browser.
-
-Note: this app is being improved and extra functionality being added.
-Take the experience by visiting it time by time.
-
-App is in development to leverage the knowledge of different technologies, functionality and
-Hands on experience.
-
-### Somewhat copyright
+Follow these steps for local version:
+1. Clone the repo/app to your local machine and open that directory.
+2. Run the command `yarn i` or `yarn install`.
+3. After `node_modules` get installed. Run `yarn start`.
+4. You can visit given `localhost:3000` or alternate given address, in your browser.
