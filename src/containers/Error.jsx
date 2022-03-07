@@ -1,10 +1,12 @@
 import React from "react";
 import styled from "styled-components";
 
-const Error = () => {
+const Error = ({ resetErrorBoundary }) => {
   const handleClick = () => {
     if (window) {
-      window.location.reload();
+      localStorage.clear();
+      resetErrorBoundary();
+      window.location = "/";
     }
   };
 

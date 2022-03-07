@@ -1,5 +1,6 @@
 import React from "react";
 //import logo from './logo.svg';
+import { ErrorBoundary } from "react-error-boundary";
 import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Navbar from "./components/Navbar";
@@ -14,13 +15,28 @@ import Checkout from "./components/Checkout";
 import Support from "./components/Support";
 import GroceryCheckout from "./components/GroceryCheckout";
 import { ProductProvider } from "./Context";
+import ErrorFallback from "./containers/Error";
 
 const App = () => {
   const [products, setProducts] = React.useState([]);
- 
+  const [hasError, setHasError] = React.useState(false);
+
+  const handleError = () => {
+    setHasError(true);
+  };
+
+  const handleResetError = () => {
+    setHasError(false);
+  };
+
   return (
     <ProductProvider products={products}>
-      <React.Fragment>
+      <ErrorBoundary
+        resetKeys={[hasError]}
+        onError={handleError}
+        resetErrorBoundary={handleResetError}
+        FallbackComponent={ErrorFallback}
+      >
         <Navbar />
         <Switch>
           <Route exact path="/" component={MainPage} />
@@ -28,18 +44,24 @@ const App = () => {
           <Route path="/cart" component={Cart} />
           <Route path="/checkout" component={Checkout} />
           <Route path="/support" component={Support} />
-          <Route path="/details/:id/:category" render={(props) => {
-            return <Details {...props} setProducts={setProducts}/>
-          }} />
-          <Route path="/:page" render={(props) => {
-            return <ProductList {...props} setProducts={setProducts} />
-          }} />
+          <Route
+            path="/details/:id/:category"
+            render={(props) => {
+              return <Details {...props} setProducts={setProducts} />;
+            }}
+          />
+          <Route
+            path="/:page"
+            render={(props) => {
+              return <ProductList {...props} setProducts={setProducts} />;
+            }}
+          />
           <Route component={Default} />
         </Switch>
         <Modal />
-      </React.Fragment>
+      </ErrorBoundary>
     </ProductProvider>
   );
-}
+};
 
 export default App;
