@@ -25,7 +25,7 @@ BE repo: https://github.com/Ckbhatia/localstore
 
 
 ### How to run this app
-You can run this app by visiting: https://citybazzar.netlify.com
+You can run this app by visiting: https://citybazzar.netlify.app
 
 Follow these steps for local version:
 1. Clone the repo/app to your local machine and open that directory.
